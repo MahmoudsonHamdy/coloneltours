@@ -1,361 +1,331 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" id="html-root">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Colonel Tours – Experience Luxury Travel</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Tajawal:wght@300;400;500;700;800&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ink:#080E1C; --deep:#0D1528; --panel:#111e35; --card:#162040;
-  --blue:#1D3FA5; --blue2:#2a52cc;
-  --gold:#C8952A; --gold2:#E8B84B; --gold3:#F5D07A;
-  --cream:#EAE4D8; --white:#fff; --muted:#6B7FA8; --dim:#4a5a7a;
-  --wa:#25D366; --r:6px;
+  --ink:#07111F; --deep:#0C1828; --panel:#101f38; --card:#152240;
+  --blue:#1B3F9E; --blue2:#2550CC;
+  --gold:#C4902A; --gold2:#E6B347; --gold3:#F7D07C;
+  --cream:#EDE7DC; --white:#fff; --muted:#7088AA; --dim:#3d5070;
+  --wa:#25D366; --r:5px;
+  --en-font:'Cormorant Garamond','Playfair Display',Georgia,serif;
+  --ar-font:'Tajawal',sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
-body{font-family:'Tajawal',sans-serif;background:var(--ink);color:var(--cream);overflow-x:hidden;}
-img{display:block;max-width:100%;}
+body{background:var(--ink);color:var(--cream);overflow-x:hidden;}
+.ar-text{font-family:var(--ar-font);}
+.en-text{font-family:var(--en-font);}
+img{display:block;width:100%;height:100%;object-fit:cover;}
 a{text-decoration:none;color:inherit;}
-::-webkit-scrollbar{width:4px;}
-::-webkit-scrollbar-thumb{background:var(--gold);border-radius:2px;}
+::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-thumb{background:var(--gold);border-radius:2px;}
 
-/* ── NAV ─────────────────────────── */
+/* ─── LANGUAGE BODY ─────────────────── */
+[lang="ar"]{direction:rtl;font-family:var(--ar-font);}
+[lang="en"]{direction:ltr;font-family:var(--en-font);}
+[lang="en"] .h-display{font-family:var(--en-font);letter-spacing:1px;}
+[lang="en"] .hero-h1{font-family:var(--en-font);letter-spacing:3px;}
+
+/* ─── NAV ────────────────────────────── */
 #nav{
   position:fixed;top:0;left:0;right:0;z-index:900;
   display:flex;align-items:center;justify-content:space-between;
-  padding:1rem 5%;
-  transition:all .35s;
+  padding:1rem 5%;transition:all .4s;
 }
-#nav.stuck{
-  background:rgba(8,14,28,.95);
-  backdrop-filter:blur(20px);
-  border-bottom:1px solid rgba(200,149,42,.15);
-  padding:.7rem 5%;
-}
-.nlogo{display:flex;align-items:center;gap:.8rem;}
-.nlogo img{height:50px;width:auto;filter:drop-shadow(0 0 10px rgba(200,149,42,.3));}
-.nlogo-t strong{display:block;font-size:1rem;font-weight:800;color:#fff;letter-spacing:.3px;}
-.nlogo-t em{font-style:normal;font-size:.6rem;color:var(--gold2);letter-spacing:2.5px;text-transform:uppercase;}
-.nlinks{display:flex;gap:2rem;list-style:none;align-items:center;}
-.nlinks a{color:rgba(255,255,255,.8);font-size:.88rem;font-weight:500;position:relative;transition:color .3s;}
+#nav.stuck{background:rgba(7,17,31,.96);backdrop-filter:blur(24px);border-bottom:1px solid rgba(196,144,42,.14);padding:.7rem 5%;}
+.nlogo{display:flex;align-items:center;gap:.85rem;}
+.nlogo img{height:52px;width:auto;filter:drop-shadow(0 0 10px rgba(196,144,42,.35));}
+.nlogo-t strong{display:block;font-size:1rem;font-weight:800;color:#fff;}
+.nlogo-t em{font-style:normal;font-size:.58rem;color:var(--gold2);letter-spacing:2.5px;text-transform:uppercase;}
+.nlinks{display:flex;gap:1.8rem;list-style:none;align-items:center;}
+.nlinks a{color:rgba(255,255,255,.8);font-size:.85rem;font-weight:500;position:relative;transition:color .3s;}
 .nlinks a::after{content:'';position:absolute;bottom:-3px;right:50%;left:50%;height:1px;background:var(--gold2);transition:right .3s,left .3s;}
-.nlinks a:hover{color:var(--gold2);}.nlinks a:hover::after{right:0;left:0;}
-.ncta{background:linear-gradient(135deg,var(--gold),var(--gold2))!important;color:var(--ink)!important;padding:.52rem 1.3rem;border-radius:var(--r);font-weight:800!important;box-shadow:0 4px 16px rgba(200,149,42,.3);}
-.ncta::after{display:none!important;}.ncta:hover{opacity:.9;}
+.nlinks a:hover,.nlinks a:focus{color:var(--gold2);}.nlinks a:hover::after{right:0;left:0;}
+.ncta{background:linear-gradient(135deg,var(--gold),var(--gold2))!important;color:var(--ink)!important;padding:.5rem 1.3rem!important;border-radius:var(--r);font-weight:800!important;box-shadow:0 4px 16px rgba(196,144,42,.3);}
+.ncta::after{display:none!important;}
+
+/* Lang toggle */
+.lang-btn{
+  display:flex;align-items:center;gap:.3rem;
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);
+  color:var(--cream);padding:.4rem .9rem;border-radius:20px;
+  font-size:.78rem;font-weight:600;cursor:pointer;
+  transition:all .25s;letter-spacing:.5px;
+}
+.lang-btn:hover{border-color:var(--gold2);color:var(--gold2);}
+
 .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;}
 .burger span{display:block;width:22px;height:2px;background:var(--gold2);border-radius:2px;}
 
-/* ── HERO ─────────────────────────── */
+/* ─── HERO ─────────────────────────── */
 .hero{min-height:100vh;position:relative;display:flex;align-items:center;overflow:hidden;}
 .hero-bg{
   position:absolute;inset:0;
   background:
-    radial-gradient(ellipse 70% 80% at 75% 50%,rgba(29,63,165,.2) 0%,transparent 60%),
-    radial-gradient(ellipse 50% 60% at 15% 30%,rgba(200,149,42,.07) 0%,transparent 50%),
-    linear-gradient(160deg,#0a1020 0%,#080e1c 55%,#0c1428 100%);
+    radial-gradient(ellipse 60% 80% at 72% 45%,rgba(27,63,158,.22) 0%,transparent 60%),
+    radial-gradient(ellipse 40% 50% at 18% 30%,rgba(196,144,42,.07) 0%,transparent 50%),
+    linear-gradient(155deg,#09142a 0%,#07111f 55%,#0b1730 100%);
 }
-/* grid lines */
-.hero-bg::after{
-  content:'';position:absolute;inset:0;
-  background-image:linear-gradient(rgba(200,149,42,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(200,149,42,.03) 1px,transparent 1px);
-  background-size:60px 60px;
-}
-/* stars */
-.hero-stars{position:absolute;inset:0;}
-.star{position:absolute;width:2px;height:2px;border-radius:50%;background:rgba(255,255,255,.5);animation:twinkle var(--t,3s) ease-in-out infinite alternate;}
-@keyframes twinkle{from{opacity:.15}to{opacity:.9}}
-/* orb */
-.hero-orb{
-  position:absolute;left:-5%;top:50%;
-  width:55vw;height:55vw;max-width:700px;max-height:700px;
-  border-radius:50%;
-  background:radial-gradient(circle at 40% 38%,rgba(29,63,165,.3) 0%,transparent 65%);
-  animation:orb-breathe 6s ease-in-out infinite alternate;
-  transform:translateY(-50%);
-}
-@keyframes orb-breathe{from{transform:translateY(-50%) scale(.96)}to{transform:translateY(-50%) scale(1.03)}}
-/* spinning ring */
-.hero-ring{
-  position:absolute;left:-5%;top:50%;
-  width:55vw;height:55vw;max-width:700px;max-height:700px;
-  border-radius:50%;
-  border:1px solid rgba(200,149,42,.1);
-  animation:ring-spin 35s linear infinite;
-  transform:translateY(-50%);
-}
-.hero-ring::before{
-  content:'';position:absolute;top:8%;right:-5px;
-  width:10px;height:10px;border-radius:50%;
-  background:var(--gold2);box-shadow:0 0 16px 5px rgba(200,149,42,.6);
-}
-@keyframes ring-spin{from{transform:translateY(-50%) rotate(0)}to{transform:translateY(-50%) rotate(360deg)}}
+.hero-bg::after{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(196,144,42,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(196,144,42,.025) 1px,transparent 1px);background-size:55px 55px;}
+.hero-stars{position:absolute;inset:0;pointer-events:none;}
+.star{position:absolute;border-radius:50%;background:#fff;animation:tw var(--t,3s) ease-in-out infinite alternate;}
+@keyframes tw{from{opacity:.1}to{opacity:.8}}
+.hero-orb{position:absolute;left:-8%;top:50%;transform:translateY(-50%);width:52vw;height:52vw;max-width:680px;max-height:680px;border-radius:50%;background:radial-gradient(circle at 40%40%,rgba(27,63,158,.28) 0%,transparent 65%);animation:ob 7s ease-in-out infinite alternate;}
+@keyframes ob{from{transform:translateY(-50%) scale(.95)}to{transform:translateY(-50%) scale(1.03)}}
+.hero-ring{position:absolute;left:-8%;top:50%;width:52vw;height:52vw;max-width:680px;max-height:680px;border-radius:50%;border:1px solid rgba(196,144,42,.1);animation:rsp 32s linear infinite;transform:translateY(-50%);}
+.hero-ring::before{content:'';position:absolute;top:7%;right:-5px;width:10px;height:10px;border-radius:50%;background:var(--gold2);box-shadow:0 0 14px 5px rgba(196,144,42,.6);}
+@keyframes rsp{from{transform:translateY(-50%) rotate(0)}to{transform:translateY(-50%) rotate(360deg)}}
 
-/* ✈ PLANE – always visible, flies in from left */
-.plane-wrap{
-  position:absolute;
-  top:32%;
-  left:18%;
-  z-index:5;
-  animation:plane-fly 2.8s cubic-bezier(.25,.46,.45,.94) .6s both;
-}
-@keyframes plane-fly{
-  from{left:-100px;top:45%;opacity:0;}
-  to{left:18%;top:32%;opacity:1;}
-}
-.plane-trail{
-  position:absolute;
-  top:36%;left:0;
-  height:2px;width:0;
-  background:linear-gradient(to right,rgba(200,149,42,.6),rgba(200,149,42,.15),transparent);
-  border-radius:2px;
-  animation:trail 2s ease 2.5s forwards;
-}
-@keyframes trail{to{width:22vw;}}
+/* ✈ PLANE */
+.plane-wrap{position:absolute;top:31%;left:20%;z-index:5;animation:pfly 3s cubic-bezier(.25,.46,.45,.94) .5s both;}
+@keyframes pfly{from{left:-100px;top:48%;opacity:0}to{left:20%;top:31%;opacity:1}}
+.plane-trail{position:absolute;top:34.5%;left:0;height:2px;width:0;background:linear-gradient(to right,rgba(196,144,42,.65),rgba(196,144,42,.1),transparent);animation:ptrl 2.2s ease 2.8s forwards;border-radius:2px;}
+@keyframes ptrl{to{width:24vw}}
 
-/* hero content */
-.hcontent{position:relative;z-index:3;padding:0 5%;max-width:660px;margin-right:0;margin-left:auto;}
-.eyebrow-row{display:flex;align-items:center;gap:.6rem;margin-bottom:1.6rem;}
-.eyebrow-line{width:30px;height:1px;background:var(--gold2);}
-.eyebrow-txt{font-size:.68rem;font-weight:700;letter-spacing:3.5px;color:var(--gold2);text-transform:uppercase;}
-.hero-h1{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:clamp(4rem,9vw,8rem);
-  line-height:.95;letter-spacing:2px;color:#fff;
-  margin-bottom:1.3rem;
-}
-.hero-h1 .shiny{
-  display:block;
-  background:linear-gradient(90deg,var(--gold) 0%,var(--gold3) 50%,var(--gold) 100%);
-  background-size:200%;
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-  animation:shine 3s linear infinite;
-}
-@keyframes shine{to{background-position:200% center}}
-.hero-p{font-size:1.05rem;line-height:1.95;color:rgba(234,228,216,.65);font-weight:300;max-width:460px;margin-bottom:2.4rem;}
+.hcontent{position:relative;z-index:3;padding:0 5%;max-width:640px;margin-right:0;margin-left:auto;}
+.eyebrow{display:flex;align-items:center;gap:.6rem;margin-bottom:1.5rem;}
+.eyebrow-line{width:28px;height:1px;background:var(--gold2);}
+.eyebrow-txt{font-size:.66rem;font-weight:700;letter-spacing:4px;color:var(--gold2);text-transform:uppercase;}
+.hero-h1{font-size:clamp(4rem,9vw,8rem);line-height:.95;letter-spacing:2px;color:#fff;margin-bottom:1.2rem;font-family:'Cormorant Garamond',serif;font-weight:700;}
+.hero-h1 .shiny{display:block;background:linear-gradient(90deg,var(--gold) 0%,var(--gold3) 50%,var(--gold) 100%);background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shn 3.5s linear infinite;}
+@keyframes shn{to{background-position:200% center}}
+.hero-p{font-size:1.05rem;line-height:1.95;color:rgba(237,231,220,.62);font-weight:300;max-width:450px;margin-bottom:2.4rem;}
 .hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
 
-.btn-gold{display:inline-flex;align-items:center;gap:.6rem;background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--ink);padding:1rem 2rem;border-radius:var(--r);font-weight:800;font-size:.92rem;font-family:'Tajawal',sans-serif;box-shadow:0 6px 24px rgba(200,149,42,.35);transition:all .3s;}
-.btn-gold:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(200,149,42,.5);}
-.btn-outline{display:inline-flex;align-items:center;gap:.6rem;background:rgba(255,255,255,.06);color:var(--cream);border:1px solid rgba(255,255,255,.18);padding:1rem 2rem;border-radius:var(--r);font-weight:500;font-size:.92rem;font-family:'Tajawal',sans-serif;backdrop-filter:blur(8px);transition:all .3s;}
+.btn-gold{display:inline-flex;align-items:center;gap:.6rem;background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--ink);padding:.95rem 2rem;border-radius:var(--r);font-weight:800;font-size:.9rem;box-shadow:0 6px 24px rgba(196,144,42,.35);transition:all .3s;font-family:inherit;}
+.btn-gold:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(196,144,42,.5);}
+.btn-outline{display:inline-flex;align-items:center;gap:.6rem;background:rgba(255,255,255,.06);color:var(--cream);border:1px solid rgba(255,255,255,.18);padding:.95rem 2rem;border-radius:var(--r);font-weight:500;font-size:.9rem;backdrop-filter:blur(8px);transition:all .3s;font-family:inherit;}
 .btn-outline:hover{border-color:var(--gold);color:var(--gold);}
 
-/* scroll hint */
-.scroll-hint{position:absolute;bottom:2.5rem;right:50%;transform:translateX(50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;z-index:3;}
-.scroll-hint span{font-size:.62rem;letter-spacing:3px;color:var(--muted);text-transform:uppercase;}
-.scroll-wheel{width:22px;height:36px;border-radius:11px;border:1px solid rgba(200,149,42,.3);display:flex;justify-content:center;padding-top:5px;}
-.scroll-wheel::before{content:'';width:4px;height:7px;border-radius:2px;background:var(--gold2);animation:sdrop 1.6s ease infinite;}
-@keyframes sdrop{0%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(14px)}}
+.scroll-hint{position:absolute;bottom:2.2rem;right:50%;transform:translateX(50%);display:flex;flex-direction:column;align-items:center;gap:.4rem;z-index:3;}
+.scroll-hint span{font-size:.6rem;letter-spacing:3px;color:var(--muted);text-transform:uppercase;}
+.sw{width:20px;height:32px;border-radius:10px;border:1px solid rgba(196,144,42,.3);display:flex;justify-content:center;padding-top:5px;}
+.sw::before{content:'';width:3px;height:6px;border-radius:2px;background:var(--gold2);animation:sd 1.6s ease infinite;}
+@keyframes sd{0%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(12px)}}
 
-/* ── STATS ─────────────────────────── */
-.stats-bar{
-  padding:2.5rem 5%;
-  background:linear-gradient(135deg,var(--blue) 0%,#142e8a 100%);
-  display:grid;grid-template-columns:repeat(4,1fr);
-  border-top:2px solid rgba(200,149,42,.25);
-  border-bottom:2px solid rgba(200,149,42,.25);
-}
-.stat{text-align:center;padding:1rem;border-left:1px solid rgba(255,255,255,.08);}
-.stat:last-child{border:none;}
-.stat-n{font-family:'Bebas Neue',sans-serif;font-size:2.8rem;background:linear-gradient(135deg,var(--gold2),var(--gold3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:block;line-height:1;}
-.stat-l{font-size:.78rem;color:rgba(255,255,255,.65);margin-top:.3rem;}
+/* ─── STATS ─────────────────────────── */
+.stats-bar{padding:2.4rem 5%;background:linear-gradient(135deg,var(--blue) 0%,#122d88 100%);display:grid;grid-template-columns:repeat(4,1fr);border-top:2px solid rgba(196,144,42,.22);border-bottom:2px solid rgba(196,144,42,.22);}
+.stat{text-align:center;padding:.8rem;border-left:1px solid rgba(255,255,255,.07);}.stat:last-child{border:none;}
+.stat-n{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:700;background:linear-gradient(135deg,var(--gold2),var(--gold3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:block;line-height:1;}
+.stat-l{font-size:.75rem;color:rgba(255,255,255,.6);margin-top:.3rem;}
 
-/* ── SECTIONS ─────────────────────── */
+/* ─── SECTION BASE ──────────────────── */
 section{padding:6rem 5%;}
-.sec-eyebrow{display:flex;align-items:center;gap:.65rem;margin-bottom:.8rem;}
-.sel{width:26px;height:1px;background:var(--gold);}
-.set{font-size:.68rem;font-weight:700;letter-spacing:3.5px;color:var(--gold);text-transform:uppercase;}
-.h2{font-family:'DM Serif Display',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:400;line-height:1.18;margin-bottom:.9rem;color:#fff;}
-.h2 em{font-style:italic;color:var(--gold2);}
-.lead{font-size:.97rem;color:var(--muted);line-height:1.9;font-weight:300;}
-.ctr{text-align:center;}.ctr .sec-eyebrow{justify-content:center;}.ctr .lead{max-width:560px;margin:0 auto;}
+.sh{display:flex;align-items:center;gap:.6rem;margin-bottom:.8rem;}
+.sl{width:24px;height:1px;background:var(--gold);}
+.st{font-size:.65rem;font-weight:700;letter-spacing:4px;color:var(--gold);text-transform:uppercase;}
+.h-display{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:600;line-height:1.18;margin-bottom:.9rem;color:#fff;}
+.h-display em{font-style:italic;color:var(--gold2);}
+.lead{font-size:.96rem;color:var(--muted);line-height:1.9;font-weight:300;}
+.ctr{text-align:center;}.ctr .sh{justify-content:center;}.ctr .lead{max-width:540px;margin:0 auto;}
 
-/* ── WHY US ─────────────────────────── */
+/* ─── WHY ────────────────────────────── */
 .why{background:var(--deep);}
-.why-g{display:grid;grid-template-columns:1fr 1fr;gap:4.5rem;align-items:center;}
-.why-img-w{position:relative;border-radius:12px;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,.55);}
-.why-img-w img{width:100%;height:500px;object-fit:cover;}
-.why-badge{position:absolute;bottom:-1.2rem;left:-1.2rem;background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--ink);padding:1.2rem 1.6rem;border-radius:10px;font-weight:800;font-size:.8rem;text-align:center;box-shadow:0 12px 32px rgba(200,149,42,.4);z-index:2;}
-.why-badge big{display:block;font-family:'Bebas Neue',sans-serif;font-size:2.6rem;line-height:1;}
-.why-features{margin-top:2rem;display:flex;flex-direction:column;gap:1.2rem;}
+.why-g{display:grid;grid-template-columns:1fr 1.05fr;gap:4.5rem;align-items:center;}
+.why-imgw{position:relative;border-radius:14px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.55);}
+.why-imgw img{height:500px;}
+.why-imgw::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(27,63,158,.18),transparent);}
+.why-badge{position:absolute;bottom:-1.2rem;left:-1.2rem;background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--ink);padding:1.2rem 1.6rem;border-radius:10px;font-weight:800;font-size:.78rem;text-align:center;box-shadow:0 12px 32px rgba(196,144,42,.4);z-index:2;}
+.why-badge big{display:block;font-family:'Cormorant Garamond',serif;font-size:2.6rem;font-weight:700;line-height:1;}
+.wfs{display:flex;flex-direction:column;gap:1.2rem;margin-top:2rem;}
 .wf{display:flex;gap:1rem;align-items:flex-start;padding:1rem 1.1rem;border-radius:8px;border:1px solid transparent;transition:all .3s;}
-.wf:hover{background:rgba(29,63,165,.1);border-color:rgba(200,149,42,.15);}
-.wf-ico{width:46px;height:46px;flex-shrink:0;border-radius:8px;background:rgba(200,149,42,.1);border:1px solid rgba(200,149,42,.2);display:flex;align-items:center;justify-content:center;font-size:1.3rem;}
-.wf h4{font-size:.97rem;font-weight:700;color:var(--cream);margin-bottom:.2rem;}
-.wf p{font-size:.82rem;color:var(--muted);line-height:1.7;font-weight:300;}
+.wf:hover{background:rgba(27,63,158,.1);border-color:rgba(196,144,42,.15);}
+.wf-ico{width:44px;height:44px;flex-shrink:0;border-radius:8px;background:rgba(196,144,42,.1);border:1px solid rgba(196,144,42,.2);display:flex;align-items:center;justify-content:center;font-size:1.2rem;}
+.wf h4{font-size:.96rem;font-weight:700;color:var(--cream);margin-bottom:.18rem;}
+.wf p{font-size:.81rem;color:var(--muted);line-height:1.7;font-weight:300;}
 
-/* ── DESTINATIONS ─────────────────── */
+/* ─── DESTINATIONS ────────────────── */
 .dest{background:var(--panel);}
 .dest-hd{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:2.5rem;flex-wrap:wrap;gap:1.5rem;}
-.dcards{display:grid;grid-template-columns:1.6fr 1fr 1fr;grid-template-rows:270px 270px;gap:.9rem;}
-.dc{position:relative;overflow:hidden;border-radius:12px;cursor:pointer;}
-.dc:first-child{grid-row:1/3;}
-.dc img{width:100%;height:100%;object-fit:cover;transition:transform .6s;}
-.dc:hover img{transform:scale(1.07);}
-.dc-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,14,28,.9) 0%,rgba(8,14,28,.1) 55%);transition:opacity .3s;}
-.dc-fast{position:absolute;top:.8rem;right:.8rem;background:rgba(200,149,42,.15);border:1px solid rgba(200,149,42,.4);color:var(--gold2);font-size:.62rem;font-weight:700;letter-spacing:1.5px;padding:.22rem .55rem;border-radius:20px;backdrop-filter:blur(6px);z-index:2;}
-.dc-flag{position:absolute;top:.8rem;left:.8rem;font-size:1.8rem;z-index:2;filter:drop-shadow(0 2px 6px rgba(0,0,0,.6));}
+/* 3-col grid, first card is big */
+.dcards{display:grid;grid-template-columns:repeat(3,1fr);gap:.9rem;}
+.dc{position:relative;overflow:hidden;border-radius:12px;cursor:pointer;height:300px;}
+.dc.big{grid-column:span 2;height:400px;}
+.dc-img-wrap{position:absolute;inset:0;}
+.dc-img-wrap img{transition:transform .6s;}
+.dc:hover .dc-img-wrap img{transform:scale(1.07);}
+.dc-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(7,17,31,.92) 0%,rgba(7,17,31,.15) 55%);}
+.dc-fast{position:absolute;top:.8rem;right:.8rem;background:rgba(196,144,42,.14);border:1px solid rgba(196,144,42,.42);color:var(--gold2);font-size:.6rem;font-weight:700;letter-spacing:1.5px;padding:.2rem .52rem;border-radius:20px;backdrop-filter:blur(6px);z-index:2;}
+.dc-flag{position:absolute;top:.8rem;left:.8rem;font-size:1.7rem;z-index:2;filter:drop-shadow(0 2px 6px rgba(0,0,0,.6));}
 .dc-info{position:absolute;bottom:0;left:0;right:0;padding:1.3rem;z-index:2;}
-.dc-name{font-family:'Bebas Neue',sans-serif;font-size:1.7rem;letter-spacing:1px;color:#fff;margin-bottom:.3rem;}
-.dc:first-child .dc-name{font-size:2.2rem;}
-.dc-chips{display:flex;gap:.6rem;margin-bottom:.4rem;}
-.dc-chip{font-size:.68rem;color:rgba(234,228,216,.7);background:rgba(255,255,255,.08);padding:.18rem .5rem;border-radius:20px;border:1px solid rgba(255,255,255,.1);}
-.dc-price{font-size:.82rem;font-weight:700;color:var(--gold2);}
-/* hover reveal */
-.dc-reveal{position:absolute;inset:0;z-index:4;background:rgba(8,14,28,.9);backdrop-filter:blur(10px);display:flex;flex-direction:column;justify-content:center;align-items:center;padding:1.8rem;text-align:center;opacity:0;transition:opacity .35s;}
+.dc-name{font-family:'Cormorant Garamond',serif;font-size:1.65rem;font-weight:700;color:#fff;line-height:1;margin-bottom:.3rem;}
+.dc.big .dc-name{font-size:2.2rem;}
+.dc-chips{display:flex;gap:.5rem;margin-bottom:.35rem;flex-wrap:wrap;}
+.dc-chip{font-size:.65rem;color:rgba(237,231,220,.7);background:rgba(255,255,255,.08);padding:.16rem .48rem;border-radius:20px;border:1px solid rgba(255,255,255,.1);}
+.dc-price{font-size:.8rem;font-weight:700;color:var(--gold2);}
+.dc-reveal{position:absolute;inset:0;z-index:4;background:rgba(7,17,31,.92);backdrop-filter:blur(10px);display:flex;flex-direction:column;justify-content:center;align-items:center;padding:1.8rem;text-align:center;opacity:0;transition:opacity .35s;}
 .dc:hover .dc-reveal{opacity:1;}
-.dcr-title{font-family:'Bebas Neue',sans-serif;font-size:1.7rem;color:var(--gold2);margin-bottom:.9rem;letter-spacing:1px;}
+.dcr-title{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:700;color:var(--gold2);margin-bottom:.9rem;}
 .dcr-list{list-style:none;width:100%;margin-bottom:1.2rem;}
-.dcr-list li{display:flex;justify-content:space-between;gap:1rem;padding:.35rem 0;border-bottom:1px solid rgba(255,255,255,.07);font-size:.8rem;}
+.dcr-list li{display:flex;justify-content:space-between;gap:1rem;padding:.35rem 0;border-bottom:1px solid rgba(255,255,255,.07);font-size:.78rem;}
 .dcr-list li span:first-child{color:var(--muted);}
 .dcr-list li span:last-child{color:#fff;font-weight:600;}
-.dcr-btn{display:inline-flex;align-items:center;gap:.45rem;background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--ink);padding:.6rem 1.4rem;border-radius:var(--r);font-weight:800;font-size:.8rem;transition:transform .2s;}
+.dcr-btn{display:inline-flex;align-items:center;gap:.45rem;background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--ink);padding:.58rem 1.4rem;border-radius:var(--r);font-weight:800;font-size:.78rem;transition:transform .2s;}
 .dcr-btn:hover{transform:scale(1.04);}
 
-/* ── SERVICES ─────────────────────── */
+/* ─── SERVICES (with real photos) ─── */
 .services{background:var(--ink);}
-.srv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:3rem;}
-.srv-card{background:var(--card);border:1px solid rgba(200,149,42,.1);border-radius:12px;padding:2rem;position:relative;overflow:hidden;transition:all .35s;}
-.srv-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(200,149,42,.05),transparent 50%);opacity:0;transition:opacity .35s;}
-.srv-card:hover{border-color:rgba(200,149,42,.4);transform:translateY(-5px);box-shadow:0 20px 50px rgba(0,0,0,.4);}.srv-card:hover::before{opacity:1;}
-.srv-ico{font-size:2.2rem;margin-bottom:1rem;display:block;}
-.srv-card h3{font-size:1.02rem;font-weight:700;color:#fff;margin-bottom:.55rem;}
-.srv-card p{font-size:.82rem;color:var(--muted);line-height:1.75;font-weight:300;margin-bottom:.9rem;}
-.srv-pts{list-style:none;margin-bottom:1.2rem;display:flex;flex-direction:column;gap:.4rem;}
-.srv-pts li{font-size:.77rem;color:var(--dim);display:flex;align-items:center;gap:.5rem;}
-.srv-pts li::before{content:'✓';color:var(--gold);font-weight:700;font-size:.7rem;}
-.srv-link{display:inline-flex;align-items:center;gap:.4rem;background:rgba(200,149,42,.1);border:1px solid rgba(200,149,42,.22);color:var(--gold);padding:.48rem 1rem;border-radius:var(--r);font-size:.76rem;font-weight:700;transition:all .3s;}
-.srv-link:hover{background:rgba(200,149,42,.2);border-color:var(--gold);}
+.srv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem;margin-top:3rem;}
+.srv-card{background:var(--card);border:1px solid rgba(196,144,42,.1);border-radius:14px;overflow:hidden;transition:all .35s;position:relative;}
+.srv-card:hover{border-color:rgba(196,144,42,.4);transform:translateY(-5px);box-shadow:0 20px 50px rgba(0,0,0,.45);}
+.srv-photo{height:180px;overflow:hidden;position:relative;}
+.srv-photo img{transition:transform .6s;}
+.srv-card:hover .srv-photo img{transform:scale(1.06);}
+.srv-photo-ov{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,rgba(7,17,31,.7) 100%);}
+.srv-photo-ico{position:absolute;bottom:.8rem;right:.8rem;background:linear-gradient(135deg,var(--gold),var(--gold2));width:38px;height:38px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.15rem;box-shadow:0 4px 14px rgba(196,144,42,.4);}
+.srv-body{padding:1.4rem;}
+.srv-card h3{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:700;color:#fff;margin-bottom:.5rem;}
+.srv-card p{font-size:.81rem;color:var(--muted);line-height:1.75;font-weight:300;margin-bottom:.9rem;}
+.srv-pts{list-style:none;margin-bottom:1.1rem;}
+.srv-pts li{font-size:.76rem;color:var(--dim);display:flex;align-items:center;gap:.45rem;margin-bottom:.35rem;}
+.srv-pts li::before{content:'✓';color:var(--gold);font-weight:700;font-size:.68rem;flex-shrink:0;}
+.srv-link{display:inline-flex;align-items:center;gap:.35rem;background:rgba(196,144,42,.08);border:1px solid rgba(196,144,42,.22);color:var(--gold);padding:.44rem .95rem;border-radius:var(--r);font-size:.74rem;font-weight:700;transition:all .3s;}
+.srv-link:hover{background:rgba(196,144,42,.18);border-color:var(--gold);}
 
-/* ── VISA GRID ─────────────────────── */
+/* ─── VISA GRID ─────────────────────── */
 .visas{background:var(--deep);}
-.vbar{display:flex;gap:.8rem;margin:2rem 0 1.8rem;flex-wrap:wrap;align-items:center;}
-.vsrch{flex:1;min-width:200px;background:var(--card);border:1px solid rgba(200,149,42,.18);color:var(--cream);padding:.72rem 1rem;border-radius:var(--r);font-family:'Tajawal',sans-serif;font-size:.9rem;outline:none;transition:all .3s;}
-.vsrch:focus{border-color:rgba(200,149,42,.5);box-shadow:0 0 0 3px rgba(200,149,42,.07);}
+.vbar{display:flex;gap:.75rem;margin:2rem 0 1.7rem;flex-wrap:wrap;align-items:center;}
+.vsrch{flex:1;min-width:200px;background:var(--card);border:1px solid rgba(196,144,42,.18);color:var(--cream);padding:.68rem .95rem;border-radius:var(--r);font-family:inherit;font-size:.88rem;outline:none;transition:all .3s;}
+.vsrch:focus{border-color:rgba(196,144,42,.5);box-shadow:0 0 0 3px rgba(196,144,42,.07);}
 .vsrch::placeholder{color:var(--dim);}
-.vtabs{display:flex;gap:.5rem;flex-wrap:wrap;}
-.vtab{background:transparent;border:1px solid rgba(200,149,42,.18);color:var(--muted);padding:.42rem 1rem;border-radius:20px;font-family:'Tajawal',sans-serif;font-size:.75rem;font-weight:600;cursor:pointer;transition:all .25s;}
-.vtab.on,.vtab:hover{background:rgba(200,149,42,.1);border-color:var(--gold);color:var(--gold);}
-.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;}
-.vc{background:var(--card);border:1px solid rgba(200,149,42,.09);border-radius:10px;padding:1.4rem;position:relative;overflow:hidden;transition:all .35s;}
-.vc::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(200,149,42,.06),transparent 50%);opacity:0;transition:opacity .35s;}
-.vc:hover{border-color:rgba(200,149,42,.38);transform:translateY(-3px);box-shadow:0 14px 40px rgba(0,0,0,.4);}.vc:hover::before{opacity:1;}
-.vc-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.9rem;}
-.vc-flag{font-size:2rem;line-height:1;}
-.vc-price{background:rgba(200,149,42,.1);border:1px solid rgba(200,149,42,.25);color:var(--gold2);padding:.24rem .62rem;border-radius:20px;font-size:.71rem;font-weight:800;}
-.vc-name{font-size:1rem;font-weight:700;color:#fff;margin-bottom:.72rem;}
-.vc-meta{display:grid;grid-template-columns:1fr 1fr;gap:.45rem;}
-.vcm{background:rgba(8,14,28,.6);padding:.36rem .54rem;border-radius:6px;}
-.vcm-l{font-size:.58rem;color:var(--dim);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:.1rem;}
-.vcm-v{font-size:.77rem;color:var(--cream);font-weight:700;}
-.vc-docs{margin-top:.7rem;font-size:.71rem;color:var(--dim);border-top:1px solid rgba(200,149,42,.07);padding-top:.62rem;line-height:1.6;}
-.vc-docs b{color:rgba(200,149,42,.75);}
-.vfast{position:absolute;top:.65rem;left:.65rem;background:rgba(74,222,128,.1);border:1px solid rgba(74,222,128,.28);color:#4ade80;font-size:.58rem;font-weight:700;letter-spacing:.8px;padding:.16rem .42rem;border-radius:10px;}
-.vempty{text-align:center;padding:3rem;color:var(--muted);display:none;font-size:.9rem;}
+.vtabs{display:flex;gap:.45rem;flex-wrap:wrap;}
+.vtab{background:transparent;border:1px solid rgba(196,144,42,.18);color:var(--muted);padding:.4rem .95rem;border-radius:20px;font-family:inherit;font-size:.73rem;font-weight:600;cursor:pointer;transition:all .25s;}
+.vtab.on,.vtab:hover{background:rgba(196,144,42,.1);border-color:var(--gold);color:var(--gold);}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:.9rem;}
+.vc{
+  background:var(--card);border:1px solid rgba(196,144,42,.08);
+  border-radius:12px;overflow:hidden;
+  transition:all .35s;position:relative;
+}
+.vc:hover{border-color:rgba(196,144,42,.38);transform:translateY(-3px);box-shadow:0 14px 40px rgba(0,0,0,.4);}
+/* country photo strip */
+.vc-photo{height:120px;overflow:hidden;position:relative;}
+.vc-photo img{transition:transform .5s;}
+.vc:hover .vc-photo img{transform:scale(1.05);}
+.vc-photo-ov{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 30%,rgba(7,17,31,.55) 100%);}
+.vc-flag-big{position:absolute;top:.55rem;right:.6rem;font-size:1.6rem;filter:drop-shadow(0 2px 5px rgba(0,0,0,.5));}
+.vc-price-badge{position:absolute;bottom:.55rem;left:.6rem;background:rgba(7,17,31,.85);border:1px solid rgba(196,144,42,.3);backdrop-filter:blur(6px);color:var(--gold2);padding:.2rem .55rem;border-radius:20px;font-size:.68rem;font-weight:800;}
+.vc-body{padding:1.1rem;}
+.vc-name{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:700;color:#fff;margin-bottom:.65rem;}
+.vc-meta{display:grid;grid-template-columns:1fr 1fr;gap:.4rem;margin-bottom:.62rem;}
+.vcm{background:rgba(7,17,31,.6);padding:.34rem .5rem;border-radius:6px;}
+.vcm-l{font-size:.56rem;color:var(--dim);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:.08rem;}
+.vcm-v{font-size:.75rem;color:var(--cream);font-weight:700;}
+.vc-docs{font-size:.68rem;color:var(--dim);line-height:1.6;}
+.vc-docs b{color:rgba(196,144,42,.75);}
+.vfast{position:absolute;top:.55rem;left:.55rem;background:rgba(74,222,128,.1);border:1px solid rgba(74,222,128,.28);color:#4ade80;font-size:.56rem;font-weight:700;letter-spacing:.8px;padding:.15rem .4rem;border-radius:10px;z-index:3;}
+.vempty{text-align:center;padding:3rem;color:var(--muted);display:none;}
 
-/* ── HOW ──────────────────────────── */
+/* ─── HOW ────────────────────────────── */
 .how{background:var(--panel);}
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-top:3.5rem;}
-.stb{text-align:center;padding:2rem 1.2rem;border:1px solid rgba(200,149,42,.12);border-radius:10px;background:rgba(8,14,28,.45);transition:all .35s;}
-.stb:hover{border-color:rgba(200,149,42,.4);transform:translateY(-5px);box-shadow:0 16px 40px rgba(0,0,0,.35);}
-.stn{width:70px;height:70px;border-radius:50%;background:rgba(29,63,165,.25);border:1px solid rgba(200,149,42,.25);display:flex;align-items:center;justify-content:center;margin:0 auto 1.3rem;font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--gold2);transition:all .35s;}
-.stb:hover .stn{background:rgba(200,149,42,.15);border-color:var(--gold);}
-.stb h3{font-size:.97rem;font-weight:700;color:#fff;margin-bottom:.55rem;}
-.stb p{font-size:.82rem;color:var(--muted);line-height:1.75;font-weight:300;}
+.stb{text-align:center;padding:2rem 1.2rem;border:1px solid rgba(196,144,42,.12);border-radius:12px;background:rgba(7,17,31,.45);transition:all .35s;}
+.stb:hover{border-color:rgba(196,144,42,.4);transform:translateY(-5px);}
+.stn{width:68px;height:68px;border-radius:50%;background:rgba(27,63,158,.25);border:1px solid rgba(196,144,42,.25);display:flex;align-items:center;justify-content:center;margin:0 auto 1.3rem;font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:700;color:var(--gold2);transition:all .35s;}
+.stb:hover .stn{background:rgba(196,144,42,.14);border-color:var(--gold);}
+.stb h3{font-size:.96rem;font-weight:700;color:#fff;margin-bottom:.52rem;}
+.stb p{font-size:.8rem;color:var(--muted);line-height:1.75;font-weight:300;}
 
-/* ── GALLERY ─────────────────────── */
+/* ─── GALLERY ────────────────────────── */
 .gal{display:flex;overflow:hidden;}
-.gi{flex:1;height:280px;overflow:hidden;position:relative;}
-.gi img{width:100%;height:100%;object-fit:cover;transition:transform .6s;}
+.gi{flex:1;height:270px;overflow:hidden;position:relative;}
+.gi img{transition:transform .6s;}
 .gi:hover img{transform:scale(1.08);}
-.gi::after{content:'';position:absolute;inset:0;background:rgba(8,14,28,.25);transition:opacity .3s;}
+.gi::after{content:'';position:absolute;inset:0;background:rgba(7,17,31,.22);transition:opacity .3s;}
 .gi:hover::after{opacity:0;}
 
-/* ── REQUEST ──────────────────────── */
+/* ─── REQUEST ────────────────────────── */
 .req{background:var(--deep);}
 .req-g{display:grid;grid-template-columns:1fr 1.05fr;gap:5rem;align-items:start;}
-.rimg{border-radius:12px;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,.55);position:relative;}
-.rimg img{width:100%;height:560px;object-fit:cover;}
-.rimg-b{position:absolute;bottom:1.4rem;left:1.4rem;background:rgba(8,14,28,.9);backdrop-filter:blur(14px);border:1px solid rgba(200,149,42,.25);padding:1rem 1.3rem;border-radius:8px;z-index:2;}
-.rimg-b p{font-size:.68rem;color:var(--muted);margin-bottom:.2rem;}
-.rimg-b strong{font-size:1.02rem;color:var(--gold2);font-weight:700;}
-.trust{list-style:none;margin-top:1.8rem;display:flex;flex-direction:column;gap:.85rem;}
-.trust li{display:flex;align-items:center;gap:.8rem;font-size:.88rem;color:var(--muted);}
-.trust li::before{content:'✓';color:var(--ink);font-weight:800;background:linear-gradient(135deg,var(--gold),var(--gold2));width:21px;height:21px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.66rem;flex-shrink:0;}
-.fcard{background:var(--card);border:1px solid rgba(200,149,42,.14);padding:2.2rem;border-radius:12px;box-shadow:0 16px 48px rgba(0,0,0,.4);}
-.ftitle{font-family:'DM Serif Display',serif;font-size:1.4rem;color:#fff;margin-bottom:1.4rem;}
-.fg{margin-bottom:.95rem;}
-.fg label{display:block;font-size:.7rem;font-weight:700;color:var(--muted);margin-bottom:.4rem;letter-spacing:.7px;text-transform:uppercase;}
-.fg input,.fg select{width:100%;background:rgba(8,14,28,.8);border:1px solid rgba(200,149,42,.16);color:var(--cream);padding:.7rem .9rem;border-radius:6px;font-family:'Tajawal',sans-serif;font-size:.9rem;outline:none;transition:all .3s;}
-.fg input:focus,.fg select:focus{border-color:rgba(200,149,42,.5);box-shadow:0 0 0 3px rgba(200,149,42,.08);}
+.rimg{border-radius:14px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.55);position:relative;}
+.rimg img{height:560px;}
+.rimg::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(7,17,31,.2),rgba(27,63,158,.2));}
+.rimg-b{position:absolute;bottom:1.4rem;left:1.4rem;background:rgba(7,17,31,.9);backdrop-filter:blur(14px);border:1px solid rgba(196,144,42,.25);padding:1rem 1.3rem;border-radius:8px;z-index:2;}
+.rimg-b p{font-size:.67rem;color:var(--muted);margin-bottom:.18rem;}
+.rimg-b strong{font-size:1rem;color:var(--gold2);font-weight:700;}
+.tpts{list-style:none;margin-top:1.8rem;display:flex;flex-direction:column;gap:.82rem;}
+.tpts li{display:flex;align-items:center;gap:.8rem;font-size:.86rem;color:var(--muted);}
+.tpts li::before{content:'✓';color:var(--ink);font-weight:800;background:linear-gradient(135deg,var(--gold),var(--gold2));width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.65rem;flex-shrink:0;}
+.fcard{background:var(--card);border:1px solid rgba(196,144,42,.13);padding:2.1rem;border-radius:14px;}
+.ftitle{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700;color:#fff;margin-bottom:1.4rem;}
+.fg{margin-bottom:.9rem;}
+.fg label{display:block;font-size:.68rem;font-weight:700;color:var(--muted);margin-bottom:.38rem;letter-spacing:.7px;text-transform:uppercase;}
+.fg input,.fg select{width:100%;background:rgba(7,17,31,.8);border:1px solid rgba(196,144,42,.16);color:var(--cream);padding:.68rem .88rem;border-radius:6px;font-family:inherit;font-size:.88rem;outline:none;transition:all .3s;}
+.fg input:focus,.fg select:focus{border-color:rgba(196,144,42,.5);box-shadow:0 0 0 3px rgba(196,144,42,.07);}
 .fg select option{background:var(--panel);}
-.frow{display:grid;grid-template-columns:1fr 1fr;gap:.95rem;}
-.fsub{width:100%;background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--ink);padding:.9rem;border:none;border-radius:6px;font-family:'Tajawal',sans-serif;font-size:1rem;font-weight:800;cursor:pointer;margin-top:.2rem;display:flex;align-items:center;justify-content:center;gap:.5rem;transition:all .3s;box-shadow:0 6px 20px rgba(200,149,42,.3);}
-.fsub:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(200,149,42,.45);}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;}
+.fsub{width:100%;background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--ink);padding:.88rem;border:none;border-radius:6px;font-family:inherit;font-size:.96rem;font-weight:800;cursor:pointer;margin-top:.2rem;display:flex;align-items:center;justify-content:center;gap:.5rem;transition:all .3s;box-shadow:0 6px 20px rgba(196,144,42,.3);}
+.fsub:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(196,144,42,.45);}
 
-/* ── TESTIMONIALS ─────────────────── */
+/* ─── TESTIMONIALS ───────────────────── */
 .testi{background:var(--panel);}
 .tg{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:3rem;}
-.tc{background:var(--card);border:1px solid rgba(200,149,42,.1);padding:1.75rem;border-radius:10px;display:flex;flex-direction:column;transition:all .3s;}
-.tc:hover{border-color:rgba(200,149,42,.3);transform:translateY(-3px);}
-.stars{color:var(--gold2);letter-spacing:2px;font-size:.88rem;margin-bottom:.88rem;}
-.tc p{font-size:.87rem;color:var(--muted);line-height:1.9;flex:1;font-weight:300;margin-bottom:1.3rem;}
-.ta{display:flex;align-items:center;gap:.7rem;}
-.tav{width:40px;height:40px;border-radius:50%;background:rgba(200,149,42,.1);border:1px solid rgba(200,149,42,.25);display:flex;align-items:center;justify-content:center;font-size:1.05rem;}
-.ta-n{font-weight:700;font-size:.86rem;color:#fff;}
-.ta-d{font-size:.7rem;color:var(--gold);}
+.tc{background:var(--card);border:1px solid rgba(196,144,42,.1);padding:1.7rem;border-radius:12px;display:flex;flex-direction:column;transition:all .3s;}
+.tc:hover{border-color:rgba(196,144,42,.3);transform:translateY(-3px);}
+.stars{color:var(--gold2);letter-spacing:2px;font-size:.86rem;margin-bottom:.85rem;}
+.tc p{font-size:.85rem;color:var(--muted);line-height:1.9;flex:1;font-weight:300;margin-bottom:1.2rem;}
+.ta{display:flex;align-items:center;gap:.65rem;}
+.tav{width:38px;height:38px;border-radius:50%;background:rgba(196,144,42,.1);border:1px solid rgba(196,144,42,.25);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.ta-n{font-weight:700;font-size:.84rem;color:#fff;}
+.ta-d{font-size:.68rem;color:var(--gold);}
 
-/* ── CONTACT BAND ─────────────────── */
+/* ─── CONTACT BAND ───────────────────── */
 .cband{position:relative;overflow:hidden;padding:5rem 5%;}
-.cband-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1540339832862-474599807836?w=1600&q=70')center/cover;}
-.cband-ov{position:absolute;inset:0;background:linear-gradient(135deg,rgba(29,63,165,.94),rgba(8,14,28,.93));}
+.cband-bg{position:absolute;inset:0;}
+.cband-bg img{opacity:.4;}
+.cband-ov{position:absolute;inset:0;background:linear-gradient(135deg,rgba(27,63,158,.95),rgba(7,17,31,.93));}
 .cband-in{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:2.5rem;}
-.cband h2{font-family:'DM Serif Display',serif;font-size:2.4rem;font-weight:400;color:#fff;}
+.cband h2{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:700;color:#fff;}
 .cband h2 em{font-style:italic;color:var(--gold2);}
-.cband-sub{font-size:.87rem;color:rgba(255,255,255,.55);margin-top:.35rem;}
-.cms{display:flex;gap:.8rem;flex-wrap:wrap;}
-.cm{display:flex;align-items:center;gap:.6rem;padding:.68rem 1.25rem;border-radius:var(--r);font-weight:600;font-size:.85rem;transition:all .3s;color:#fff;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.08);backdrop-filter:blur(6px);}
+.cband-sub{font-size:.86rem;color:rgba(255,255,255,.55);margin-top:.35rem;}
+.cms{display:flex;gap:.75rem;flex-wrap:wrap;}
+.cm{display:flex;align-items:center;gap:.55rem;padding:.65rem 1.2rem;border-radius:var(--r);font-weight:600;font-size:.83rem;transition:all .3s;color:#fff;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.08);backdrop-filter:blur(6px);}
 .cm:hover{border-color:rgba(255,255,255,.4);transform:translateY(-2px);}
-.cm.wa{background:rgba(37,211,102,.16);border-color:rgba(37,211,102,.35);}.cm.wa:hover{background:rgba(37,211,102,.28);}
+.cm.wa{background:rgba(37,211,102,.15);border-color:rgba(37,211,102,.35);}.cm.wa:hover{background:rgba(37,211,102,.27);}
 
-/* ── FOOTER ──────────────────────── */
-footer{background:#050b15;padding:4rem 5% 1.8rem;border-top:1px solid rgba(200,149,42,.1);}
+/* ─── FOOTER ─────────────────────────── */
+footer{background:#040c18;padding:4rem 5% 1.8rem;border-top:1px solid rgba(196,144,42,.1);}
 .ftop{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:2.8rem;}
 .flogo{display:flex;align-items:center;gap:.7rem;margin-bottom:1rem;}
 .flogo img{height:48px;width:auto;}
-.flogo strong{display:block;font-weight:800;color:#fff;font-size:.97rem;}
-.flogo em{font-style:normal;font-size:.58rem;color:var(--gold);letter-spacing:2px;text-transform:uppercase;}
-.fbp{font-size:.83rem;color:var(--muted);line-height:1.85;font-weight:300;margin-bottom:1.2rem;}
-.soc{display:flex;gap:.6rem;}
-.soc a{width:36px;height:36px;border-radius:6px;border:1px solid rgba(200,149,42,.18);display:flex;align-items:center;justify-content:center;color:var(--muted);transition:all .3s;}
+.flogo strong{display:block;font-weight:800;color:#fff;font-size:.96rem;}
+.flogo em{display:block;font-style:normal;font-size:.57rem;color:var(--gold);letter-spacing:2px;text-transform:uppercase;}
+.fbp{font-size:.82rem;color:var(--muted);line-height:1.85;font-weight:300;margin-bottom:1.2rem;}
+.soc{display:flex;gap:.55rem;}
+.soc a{width:34px;height:34px;border-radius:6px;border:1px solid rgba(196,144,42,.18);display:flex;align-items:center;justify-content:center;color:var(--muted);transition:all .3s;}
 .soc a:hover{border-color:var(--gold);color:var(--gold);}
-.soc a svg{width:15px;height:15px;fill:currentColor;}
-.fc h4{font-size:.83rem;font-weight:700;color:var(--cream);margin-bottom:1rem;}
+.soc a svg{width:14px;height:14px;fill:currentColor;}
+.fc h4{font-size:.82rem;font-weight:700;color:var(--cream);margin-bottom:.95rem;}
 .fc ul{list-style:none;}
 .fc ul li{margin-bottom:.5rem;}
-.fc ul li a{color:var(--muted);font-size:.8rem;font-weight:300;transition:color .3s;}
+.fc ul li a{color:var(--muted);font-size:.78rem;font-weight:300;transition:color .3s;}
 .fc ul li a:hover{color:var(--gold);}
-.fbot{border-top:1px solid rgba(255,255,255,.05);padding-top:1.3rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:.8rem;}
-.fbot p{font-size:.72rem;color:var(--dim);}
+.fbot{border-top:1px solid rgba(255,255,255,.04);padding-top:1.2rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:.8rem;}
+.fbot p{font-size:.7rem;color:var(--dim);}
 .fbot span{color:var(--gold);}
 
-/* ── WA FLOAT ─────────────────────── */
+/* ─── WA FLOAT ───────────────────────── */
 .wafl{position:fixed;bottom:2rem;left:2rem;z-index:800;}
-.wafl a{display:flex;align-items:center;gap:.6rem;background:var(--wa);color:#fff;padding:.72rem 1.3rem;border-radius:30px;font-weight:700;font-size:.84rem;box-shadow:0 6px 24px rgba(37,211,102,.45);transition:all .3s;animation:wap 2.5s ease infinite;}
+.wafl a{display:flex;align-items:center;gap:.55rem;background:var(--wa);color:#fff;padding:.68rem 1.25rem;border-radius:30px;font-weight:700;font-size:.82rem;box-shadow:0 6px 22px rgba(37,211,102,.42);transition:all .3s;animation:wap 2.5s ease infinite;}
 .wafl a:hover{background:#1ebe5c;transform:translateY(-2px);}
-@keyframes wap{0%,100%{box-shadow:0 6px 24px rgba(37,211,102,.45)}50%{box-shadow:0 6px 36px rgba(37,211,102,.7)}}
+@keyframes wap{0%,100%{box-shadow:0 6px 22px rgba(37,211,102,.42)}50%{box-shadow:0 6px 34px rgba(37,211,102,.68)}}
 
-/* ── REVEAL ANIMATION ─────────────── */
-.fade-in{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease;}
-.fade-in.visible{opacity:1;transform:translateY(0);}
+/* ─── REVEAL ─────────────────────────── */
+.ri{opacity:0;transform:translateY(26px);transition:opacity .65s ease,transform .65s ease;}
+.ri.on{opacity:1;transform:translateY(0);}
 
-/* ── RESPONSIVE ───────────────────── */
+/* ─── RESPONSIVE ─────────────────────── */
 @media(max-width:1100px){
   .why-g,.req-g{grid-template-columns:1fr;}
-  .rimg{display:none;}
-  .dcards{grid-template-columns:1fr 1fr;grid-template-rows:250px 250px 250px;}
-  .dc:first-child{grid-row:auto;}
+  .why-imgw,.rimg{display:none;}
+  .dcards{grid-template-columns:1fr 1fr;}
+  .dc.big{grid-column:span 2;height:300px;}
+  .dc{height:250px;}
   .steps{grid-template-columns:repeat(2,1fr);}
   .ftop{grid-template-columns:1fr 1fr;}
   .srv-grid{grid-template-columns:repeat(2,1fr);}
@@ -363,18 +333,16 @@ footer{background:#050b15;padding:4rem 5% 1.8rem;border-top:1px solid rgba(200,1
 @media(max-width:768px){
   .nlinks{display:none;}
   .burger{display:flex;}
-  .nlinks.open{display:flex;flex-direction:column;position:fixed;top:66px;right:0;left:0;background:rgba(8,14,28,.97);padding:1.8rem 5%;gap:1.2rem;border-bottom:1px solid rgba(200,149,42,.12);}
+  .nlinks.open{display:flex;flex-direction:column;position:fixed;top:64px;right:0;left:0;background:rgba(7,17,31,.97);padding:1.8rem 5%;gap:1.2rem;border-bottom:1px solid rgba(196,144,42,.12);}
   .stats-bar{grid-template-columns:repeat(2,1fr);}
-  .stat{border-left:none;border-bottom:1px solid rgba(255,255,255,.06);}
-  .dcards{grid-template-columns:1fr;grid-template-rows:repeat(7,240px);}
-  .tg{grid-template-columns:1fr;}
+  .stat{border-left:none;border-bottom:1px solid rgba(255,255,255,.05);}
+  .dcards{grid-template-columns:1fr;}.dc,.dc.big{height:240px;grid-column:auto;}
+  .tg,.srv-grid{grid-template-columns:1fr;}
   .frow{grid-template-columns:1fr;}
   .cband-in{flex-direction:column;text-align:center;}
   .ftop{grid-template-columns:1fr;gap:1.8rem;}
   .fbot{flex-direction:column;text-align:center;}
-  .gal{flex-wrap:wrap;}
-  .gi{flex:none;width:50%;height:200px;}
-  .srv-grid{grid-template-columns:1fr;}
+  .gal{flex-wrap:wrap;}.gi{flex:none;width:50%;height:190px;}
   .plane-wrap{display:none;}
 }
 @media(max-width:480px){
@@ -390,16 +358,19 @@ footer{background:#050b15;padding:4rem 5% 1.8rem;border-top:1px solid rgba(200,1
 <nav id="nav">
   <a href="#" class="nlogo">
     <img src="logo-white.png" alt="Colonel Tours">
-    <div class="nlogo-t"><strong>Colonel Tours</strong><em>EXPERIENCE LUXURY TRAVEL</em></div>
+    <div class="nlogo-t"><strong>Colonel Tours</strong><em>Experience Luxury Travel</em></div>
   </a>
   <ul class="nlinks" id="nl">
-    <li><a href="#dest">الوجهات</a></li>
-    <li><a href="#visas">الأسعار</a></li>
-    <li><a href="#services">خدماتنا</a></li>
-    <li><a href="#how">كيف نعمل</a></li>
-    <li><a href="#request" class="ncta">احجز الآن ✈</a></li>
+    <li><a href="#dest" data-ar="الوجهات" data-en="Destinations">الوجهات</a></li>
+    <li><a href="#visas" data-ar="الأسعار" data-en="Prices">الأسعار</a></li>
+    <li><a href="#services" data-ar="خدماتنا" data-en="Services">خدماتنا</a></li>
+    <li><a href="#how" data-ar="كيف نعمل" data-en="How It Works">كيف نعمل</a></li>
+    <li><a href="#request" class="ncta" data-ar="احجز الآن ✈" data-en="Book Now ✈">احجز الآن ✈</a></li>
   </ul>
-  <div class="burger" onclick="document.getElementById('nl').classList.toggle('open')"><span></span><span></span><span></span></div>
+  <div style="display:flex;gap:.7rem;align-items:center;">
+    <button class="lang-btn" id="langBtn" onclick="toggleLang()">EN</button>
+    <div class="burger" onclick="document.getElementById('nl').classList.toggle('open')"><span></span><span></span><span></span></div>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -408,72 +379,63 @@ footer{background:#050b15;padding:4rem 5% 1.8rem;border-top:1px solid rgba(200,1
   <div class="hero-stars" id="stars"></div>
   <div class="hero-orb"></div>
   <div class="hero-ring"></div>
-
-  <!-- ✈ PLANE ALWAYS VISIBLE -->
   <div class="plane-trail"></div>
+  <!-- ✈ PLANE SVG -->
   <div class="plane-wrap">
-    <svg width="70" height="70" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <g filter="drop-shadow(0 0 12px rgba(232,184,75,0.7))">
-        <!-- plane body -->
-        <path d="M58 8L6 28l16 5 4 18 8-16 24-27z" fill="#E8B84B"/>
-        <!-- wing highlight -->
-        <path d="M58 8L22 33l4 18 8-16z" fill="#F5D07A" opacity=".6"/>
-        <!-- trail dots -->
-        <circle cx="4" cy="36" r="2" fill="#E8B84B" opacity=".5"/>
-        <circle cx="10" cy="40" r="1.5" fill="#E8B84B" opacity=".3"/>
+    <svg width="72" height="72" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <filter id="glow"><feGaussianBlur stdDeviation="2.5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      <g filter="url(#glow)">
+        <path d="M56 8L6 26l15 5 3.5 19L31 36l25-28z" fill="#E6B347"/>
+        <path d="M56 8L21 31l3.5 19L31 36z" fill="#F7D07C" opacity=".55"/>
+        <circle cx="3" cy="33" r="2" fill="#E6B347" opacity=".5"/>
+        <circle cx="9" cy="37" r="1.5" fill="#E6B347" opacity=".3"/>
       </g>
     </svg>
   </div>
 
   <div class="hcontent">
-    <div class="eyebrow-row">
+    <div class="eyebrow">
       <div class="eyebrow-line"></div>
-      <span class="eyebrow-txt">متخصصون في تأشيرات السياحة الدولية</span>
+      <span class="eyebrow-txt" data-ar="متخصصون في تأشيرات السياحة الدولية" data-en="International Tourism Visa Specialists">متخصصون في تأشيرات السياحة الدولية</span>
     </div>
     <h1 class="hero-h1">
-      COLONEL<br>
-      <span class="shiny">TOURS</span>
+      COLONEL<br><span class="shiny">TOURS</span>
     </h1>
-    <p class="hero-p">بنوصلك لأكتر من 60 وجهة حول العالم. تأشيرات، فنادق، طيران، وتجهيز خط السير — كل حاجة في مكان واحد.</p>
+    <p class="hero-p" data-ar="بنوصلك لأكتر من 60 وجهة حول العالم. تأشيرات، فنادق، طيران، وتجهيز خط السير — كل حاجة في مكان واحد." data-en="We take you to 60+ destinations worldwide. Visas, hotels, flights, and full itinerary planning — everything in one place.">بنوصلك لأكتر من 60 وجهة حول العالم. تأشيرات، فنادق، طيران، وتجهيز خط السير — كل حاجة في مكان واحد.</p>
     <div class="hero-btns">
-      <a href="#request" class="btn-gold">
-        ابدأ طلبك دلوقتي
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M21 3L3 10.5l6.75 2.25L12 21l3-6.75L21 3z"/></svg>
+      <a href="#request" class="btn-gold" data-ar="ابدأ طلبك دلوقتي" data-en="Start Your Application">ابدأ طلبك دلوقتي
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M21 3L3 10.5l6.75 2.25L12 21l3-6.75L21 3z"/></svg>
       </a>
-      <a href="#dest" class="btn-outline">شوف وجهاتنا</a>
+      <a href="#dest" class="btn-outline" data-ar="شوف وجهاتنا" data-en="Explore Destinations">شوف وجهاتنا</a>
     </div>
   </div>
-
-  <div class="scroll-hint">
-    <span>اسكرول</span>
-    <div class="scroll-wheel"></div>
-  </div>
+  <div class="scroll-hint"><span data-ar="اسكرول" data-en="scroll">اسكرول</span><div class="sw"></div></div>
 </section>
 
 <!-- STATS -->
 <div class="stats-bar">
-  <div class="stat"><span class="stat-n">5000+</span><div class="stat-l">تأشيرة ناجحة</div></div>
-  <div class="stat"><span class="stat-n">60+</span><div class="stat-l">وجهة متاحة</div></div>
-  <div class="stat"><span class="stat-n">98%</span><div class="stat-l">نسبة القبول</div></div>
-  <div class="stat"><span class="stat-n">10+</span><div class="stat-l">سنوات خبرة</div></div>
+  <div class="stat"><span class="stat-n">5000+</span><div class="stat-l" data-ar="تأشيرة ناجحة" data-en="Successful Visas">تأشيرة ناجحة</div></div>
+  <div class="stat"><span class="stat-n">60+</span><div class="stat-l" data-ar="وجهة متاحة" data-en="Destinations">وجهة متاحة</div></div>
+  <div class="stat"><span class="stat-n">98%</span><div class="stat-l" data-ar="نسبة القبول" data-en="Approval Rate">نسبة القبول</div></div>
+  <div class="stat"><span class="stat-n">10+</span><div class="stat-l" data-ar="سنوات خبرة" data-en="Years Experience">سنوات خبرة</div></div>
 </div>
 
 <!-- WHY US -->
 <section class="why" id="why">
   <div class="why-g">
-    <div class="why-img-w fade-in">
-      <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=900&q=85" alt="فريق">
-      <div class="why-badge"><big>98%</big>نسبة القبول</div>
+    <div class="why-imgw ri">
+      <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=900&q=85" alt="">
+      <div class="why-badge"><big>98%</big><span data-ar="نسبة القبول" data-en="Approval Rate">نسبة القبول</span></div>
     </div>
-    <div class="fade-in">
-      <div class="sec-eyebrow"><div class="sel"></div><span class="set">لماذا تختارنا</span></div>
-      <h2 class="h2">خبرة <em>حقيقية</em><br>ونتائج مضمونة</h2>
-      <p class="lead">مش بس بنجمع أوراق. إحنا بنبني ملفك بشكل صح عشان نوصل لأعلى نسبة قبول ممكنة لكل قنصلية.</p>
-      <div class="why-features">
-        <div class="wf"><div class="wf-ico">⚡</div><div><h4>سرعة في التنفيذ</h4><p>تركيا في ساعة واحدة. أسرع معالجة في السوق لأكتر من 15 وجهة مختلفة.</p></div></div>
-        <div class="wf"><div class="wf-ico">🛡️</div><div><h4>مراجعة الملف قبل التقديم</h4><p>بنراجع كل ورقة قبل ما نقدم عشان مفيش غلطة تأثر على قرار القنصلية.</p></div></div>
-        <div class="wf"><div class="wf-ico">💬</div><div><h4>تواصل على مدار الساعة</h4><p>فريقنا متاح على واتساب طول الوقت ويرد في أقل من ساعة.</p></div></div>
-        <div class="wf"><div class="wf-ico">🌍</div><div><h4>60+ وجهة متاحة</h4><p>من أفريقيا لآسيا لأوروبا. عندنا تأشيرة لكل مكان بتحلم تسافره.</p></div></div>
+    <div class="ri">
+      <div class="sh"><div class="sl"></div><span class="st" data-ar="لماذا تختارنا" data-en="Why Choose Us">لماذا تختارنا</span></div>
+      <h2 class="h-display" data-ar="خبرة <em>حقيقية</em><br>ونتائج مضمونة" data-en="Real <em>Expertise</em><br>Guaranteed Results">خبرة <em>حقيقية</em><br>ونتائج مضمونة</h2>
+      <p class="lead" data-ar="مش بس بنجمع أوراق. إحنا بنبني ملفك بشكل صح عشان نوصل لأعلى نسبة قبول ممكنة لكل قنصلية." data-en="We don't just collect documents. We build your file correctly to achieve the highest possible approval rate at every consulate.">مش بس بنجمع أوراق. إحنا بنبني ملفك بشكل صح عشان نوصل لأعلى نسبة قبول ممكنة لكل قنصلية.</p>
+      <div class="wfs">
+        <div class="wf"><div class="wf-ico">⚡</div><div><h4 data-ar="سرعة في التنفيذ" data-en="Fast Processing">سرعة في التنفيذ</h4><p data-ar="تركيا في ساعة واحدة. أسرع معالجة في السوق لأكتر من 15 وجهة." data-en="Turkey in one hour. Fastest processing for 15+ destinations.">تركيا في ساعة واحدة. أسرع معالجة في السوق لأكتر من 15 وجهة.</p></div></div>
+        <div class="wf"><div class="wf-ico">🛡️</div><div><h4 data-ar="مراجعة الملف قبل التقديم" data-en="File Review Before Submission">مراجعة الملف قبل التقديم</h4><p data-ar="بنراجع كل ورقة قبل ما نقدم عشان مفيش غلطة تأثر على قرار القنصلية." data-en="Every document is reviewed before submission to avoid any errors that could affect the consulate's decision.">بنراجع كل ورقة قبل ما نقدم عشان مفيش غلطة تأثر على قرار القنصلية.</p></div></div>
+        <div class="wf"><div class="wf-ico">💬</div><div><h4 data-ar="تواصل على مدار الساعة" data-en="24/7 Support">تواصل على مدار الساعة</h4><p data-ar="فريقنا متاح على واتساب طول الوقت ويرد في أقل من ساعة." data-en="Our team is available on WhatsApp at all times and responds within an hour.">فريقنا متاح على واتساب طول الوقت ويرد في أقل من ساعة.</p></div></div>
+        <div class="wf"><div class="wf-ico">🌍</div><div><h4 data-ar="60+ وجهة متاحة" data-en="60+ Destinations">60+ وجهة متاحة</h4><p data-ar="من أفريقيا لآسيا لأوروبا. عندنا تأشيرة لكل مكان بتحلم تسافره." data-en="From Africa to Asia to Europe. We have a visa for every destination you dream of.">من أفريقيا لآسيا لأوروبا. عندنا تأشيرة لكل مكان بتحلم تسافره.</p></div></div>
       </div>
     </div>
   </div>
@@ -482,213 +444,281 @@ footer{background:#050b15;padding:4rem 5% 1.8rem;border-top:1px solid rgba(200,1
 <!-- DESTINATIONS -->
 <section class="dest" id="dest">
   <div class="dest-hd">
-    <div class="fade-in">
-      <div class="sec-eyebrow"><div class="sel"></div><span class="set">الأكثر طلباً</span></div>
-      <h2 class="h2">وجهاتنا <em>المميزة</em></h2>
-      <p class="lead">مرر على الكارت عشان تشوف التفاصيل كاملة</p>
+    <div class="ri">
+      <div class="sh"><div class="sl"></div><span class="st" data-ar="الأكثر طلباً" data-en="Most Popular">الأكثر طلباً</span></div>
+      <h2 class="h-display" data-ar="وجهاتنا <em>المميزة</em>" data-en="Our <em>Featured</em> Destinations">وجهاتنا <em>المميزة</em></h2>
+      <p class="lead" data-ar="مرر على الكارت عشان تشوف التفاصيل كاملة" data-en="Hover over a card to see full details">مرر على الكارت عشان تشوف التفاصيل كاملة</p>
     </div>
-    <a href="#visas" class="btn-outline fade-in">شوف كل الوجهات</a>
+    <a href="#visas" class="btn-outline ri" data-ar="شوف كل الوجهات" data-en="All Destinations">شوف كل الوجهات</a>
   </div>
-  <div class="dcards fade-in">
+  <div class="dcards ri">
 
-    <div class="dc">
-      <img src="https://images.unsplash.com/photo-1500759285222-a95626b934cb?w=1200&q=80" alt="كوبا">
+    <!-- Cuba BIG -->
+    <div class="dc big">
+      <div class="dc-img-wrap"><img src="https://images.unsplash.com/photo-1500759285222-a95626b934cb?w=1100&q=80" alt="Cuba"></div>
       <div class="dc-ov"></div>
-      <div class="dc-fast">⚡ 48 ساعة</div>
-      <div class="dc-flag">🇨🇺</div>
+      <div class="dc-fast">⚡ 48h</div><div class="dc-flag">🇨🇺</div>
       <div class="dc-info">
         <div class="dc-name">CUBA</div>
         <div class="dc-chips"><span class="dc-chip">48 ساعة</span><span class="dc-chip">3 أشهر</span></div>
-        <div class="dc-price">من 7,000 جنيه</div>
+        <div class="dc-price" data-ar="من 7,000 جنيه" data-en="From EGP 7,000">من 7,000 جنيه</div>
       </div>
       <div class="dc-reveal">
-        <div class="dcr-title">🇨🇺 كوبا</div>
+        <div class="dcr-title">🇨🇺 Cuba / كوبا</div>
         <ul class="dcr-list">
-          <li><span>مدة التنفيذ</span><span>48 ساعة ⚡</span></li>
-          <li><span>مدة التأشيرة</span><span>3 أشهر</span></li>
-          <li><span>للمصريين</span><span>7,000 جنيه</span></li>
-          <li><span>لغير المصريين</span><span>10,000 جنيه</span></li>
+          <li><span data-ar="مدة التنفيذ" data-en="Processing">مدة التنفيذ</span><span>48h ⚡</span></li>
+          <li><span data-ar="مدة التأشيرة" data-en="Validity">مدة التأشيرة</span><span data-ar="3 أشهر" data-en="3 months">3 أشهر</span></li>
+          <li><span data-ar="للمصريين" data-en="Egyptians">للمصريين</span><span>7,000 EGP</span></li>
+          <li><span data-ar="لغير المصريين" data-en="Non-Egyptians">لغير المصريين</span><span>10,000 EGP</span></li>
         </ul>
-        <a href="https://wa.me/201126672801" target="_blank" class="dcr-btn">احجز دلوقتي ✈</a>
+        <a href="https://wa.me/201126672801" target="_blank" class="dcr-btn" data-ar="احجز دلوقتي ✈" data-en="Book Now ✈">احجز دلوقتي ✈</a>
       </div>
     </div>
 
+    <!-- Georgia -->
     <div class="dc">
-      <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=700&q=80" alt="جورجيا">
-      <div class="dc-ov"></div>
-      <div class="dc-flag">🇬🇪</div>
+      <div class="dc-img-wrap"><img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=700&q=80" alt="Georgia"></div>
+      <div class="dc-ov"></div><div class="dc-flag">🇬🇪</div>
       <div class="dc-info">
         <div class="dc-name">GEORGIA</div>
         <div class="dc-chips"><span class="dc-chip">7 أيام</span><span class="dc-chip">شهر</span></div>
-        <div class="dc-price">من 2,800 جنيه</div>
+        <div class="dc-price" data-ar="من 2,800 جنيه" data-en="From EGP 2,800">من 2,800 جنيه</div>
       </div>
       <div class="dc-reveal">
-        <div class="dcr-title">🇬🇪 جورجيا</div>
+        <div class="dcr-title">🇬🇪 Georgia / جورجيا</div>
         <ul class="dcr-list">
-          <li><span>مدة التنفيذ</span><span>7 أيام</span></li>
-          <li><span>مدة التأشيرة</span><span>شهر</span></li>
-          <li><span>الأوراق</span><span>جواز + صورة</span></li>
-          <li><span>السعر</span><span>2,800 جنيه</span></li>
+          <li><span>Processing</span><span>7 days</span></li>
+          <li><span>Validity</span><span>1 month</span></li>
+          <li><span>Docs</span><span>Passport + Photo</span></li>
+          <li><span>Price</span><span>2,800 EGP</span></li>
         </ul>
-        <a href="https://wa.me/201126672801" target="_blank" class="dcr-btn">احجز دلوقتي ✈</a>
+        <a href="https://wa.me/201126672801" target="_blank" class="dcr-btn">Book Now ✈</a>
       </div>
     </div>
 
+    <!-- Bahrain -->
     <div class="dc">
-      <img src="https://images.unsplash.com/photo-1559628233-100c798642d8?w=700&q=80" alt="البحرين">
-      <div class="dc-ov"></div>
-      <div class="dc-flag">🇧🇭</div>
+      <div class="dc-img-wrap"><img src="https://images.unsplash.com/photo-1559628233-100c798642d8?w=700&q=80" alt="Bahrain"></div>
+      <div class="dc-ov"></div><div class="dc-flag">🇧🇭</div>
       <div class="dc-info">
         <div class="dc-name">BAHRAIN</div>
         <div class="dc-chips"><span class="dc-chip">7 أيام</span><span class="dc-chip">حتى سنة</span></div>
-        <div class="dc-price">من 3,700 جنيه</div>
+        <div class="dc-price" data-ar="من 3,700 جنيه" data-en="From EGP 3,700">من 3,700 جنيه</div>
       </div>
       <div class="dc-reveal">
-        <div class="dcr-title">🇧🇭 البحرين</div>
+        <div class="dcr-title">🇧🇭 Bahrain / البحرين</div>
         <ul class="dcr-list">
-          <li><span>أسبوعين</span><span>3,700 جنيه</span></li>
-          <li><span>3 أشهر</span><span>4,700 جنيه</span></li>
-          <li><span>سنة</span><span>9,000 جنيه</span></li>
+          <li><span>2 weeks</span><span>3,700 EGP</span></li>
+          <li><span>3 months</span><span>4,700 EGP</span></li>
+          <li><span>1 year</span><span>9,000 EGP</span></li>
         </ul>
-        <a href="https://wa.me/201126672801" target="_blank" class="dcr-btn">احجز دلوقتي ✈</a>
+        <a href="https://wa.me/201126672801" target="_blank" class="dcr-btn">Book Now ✈</a>
       </div>
     </div>
 
+    <!-- Uzbekistan -->
     <div class="dc">
-      <img src="https://images.unsplash.com/photo-1570660967346-7f40fce84cf2?w=700&q=80" alt="أوزبكستان">
+      <div class="dc-img-wrap"><img src="https://images.unsplash.com/photo-1570660967346-7f40fce84cf2?w=700&q=80" alt="Uzbekistan"></div>
       <div class="dc-ov"></div>
-      <div class="dc-fast">⚡ 5 أيام</div>
-      <div class="dc-flag">🇺🇿</div>
+      <div class="dc-fast">⚡ 5 days</div><div class="dc-flag">🇺🇿</div>
       <div class="dc-info">
         <div class="dc-name">UZBEKISTAN</div>
         <div class="dc-chips"><span class="dc-chip">5 أيام</span><span class="dc-chip">شهر</span></div>
-        <div class="dc-price">من 3,500 جنيه</div>
+        <div class="dc-price" data-ar="من 3,500 جنيه" data-en="From EGP 3,500">من 3,500 جنيه</div>
       </div>
       <div class="dc-reveal">
-        <div class="dcr-title">🇺🇿 أوزبكستان</div>
+        <div class="dcr-title">🇺🇿 Uzbekistan / أوزبكستان</div>
         <ul class="dcr-list">
-          <li><span>مدة التنفيذ</span><span>5 أيام ⚡</span></li>
-          <li><span>مدة التأشيرة</span><span>شهر</span></li>
-          <li><span>السعر</span><span>3,500 جنيه</span></li>
+          <li><span>Processing</span><span>5 days ⚡</span></li>
+          <li><span>Validity</span><span>1 month</span></li>
+          <li><span>Price</span><span>3,500 EGP</span></li>
         </ul>
-        <a href="https://wa.me/201126672801" target="_blank" class="dcr-btn">احجز دلوقتي ✈</a>
+        <a href="https://wa.me/201126672801" target="_blank" class="dcr-btn">Book Now ✈</a>
       </div>
     </div>
 
+    <!-- Kenya -->
     <div class="dc">
-      <img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=700&q=80" alt="كينيا">
-      <div class="dc-ov"></div>
-      <div class="dc-flag">🇰🇪</div>
+      <div class="dc-img-wrap"><img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=700&q=80" alt="Kenya"></div>
+      <div class="dc-ov"></div><div class="dc-flag">🇰🇪</div>
       <div class="dc-info">
         <div class="dc-name">KENYA</div>
         <div class="dc-chips"><span class="dc-chip">7 أيام</span><span class="dc-chip">3 أشهر</span></div>
-        <div class="dc-price">من 5,000 جنيه</div>
+        <div class="dc-price" data-ar="من 5,000 جنيه" data-en="From EGP 5,000">من 5,000 جنيه</div>
       </div>
       <div class="dc-reveal">
-        <div class="dcr-title">🇰🇪 كينيا</div>
+        <div class="dcr-title">🇰🇪 Kenya / كينيا</div>
         <ul class="dcr-list">
-          <li><span>مدة التنفيذ</span><span>7 أيام</span></li>
-          <li><span>مدة التأشيرة</span><span>3 أشهر</span></li>
-          <li><span>السعر</span><span>5,000 جنيه</span></li>
+          <li><span>Processing</span><span>7 days</span></li>
+          <li><span>Validity</span><span>3 months</span></li>
+          <li><span>Price</span><span>5,000 EGP</span></li>
         </ul>
-        <a href="https://wa.me/201126672801" target="_blank" class="dcr-btn">احجز دلوقتي ✈</a>
+        <a href="https://wa.me/201126672801" target="_blank" class="dcr-btn">Book Now ✈</a>
       </div>
     </div>
 
+    <!-- Uganda -->
     <div class="dc">
-      <img src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=700&q=80" alt="أوغندا">
-      <div class="dc-ov"></div>
-      <div class="dc-flag">🇺🇬</div>
+      <div class="dc-img-wrap"><img src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=700&q=80" alt="Uganda"></div>
+      <div class="dc-ov"></div><div class="dc-flag">🇺🇬</div>
       <div class="dc-info">
         <div class="dc-name">UGANDA</div>
         <div class="dc-chips"><span class="dc-chip">10 أيام</span><span class="dc-chip">3 أشهر</span></div>
-        <div class="dc-price">من 5,500 جنيه</div>
+        <div class="dc-price" data-ar="من 5,500 جنيه" data-en="From EGP 5,500">من 5,500 جنيه</div>
       </div>
       <div class="dc-reveal">
-        <div class="dcr-title">🇺🇬 أوغندا</div>
+        <div class="dcr-title">🇺🇬 Uganda / أوغندا</div>
         <ul class="dcr-list">
-          <li><span>مدة التنفيذ</span><span>10 أيام</span></li>
-          <li><span>مدة التأشيرة</span><span>3 أشهر</span></li>
-          <li><span>السعر</span><span>5,500 جنيه</span></li>
+          <li><span>Processing</span><span>10 days</span></li>
+          <li><span>Validity</span><span>3 months</span></li>
+          <li><span>Price</span><span>5,500 EGP</span></li>
         </ul>
-        <a href="https://wa.me/201126672801" target="_blank" class="dcr-btn">احجز دلوقتي ✈</a>
+        <a href="https://wa.me/201126672801" target="_blank" class="dcr-btn">Book Now ✈</a>
       </div>
     </div>
 
-    <div class="dc">
-      <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=1200&q=80" alt="سيشل">
+    <!-- Seychelles BIG -->
+    <div class="dc big">
+      <div class="dc-img-wrap"><img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=1100&q=80" alt="Seychelles"></div>
       <div class="dc-ov"></div>
-      <div class="dc-fast">⚡ 5 أيام</div>
-      <div class="dc-flag">🇸🇨</div>
+      <div class="dc-fast">⚡ 5 days</div><div class="dc-flag">🇸🇨</div>
       <div class="dc-info">
         <div class="dc-name">SEYCHELLES</div>
         <div class="dc-chips"><span class="dc-chip">5 أيام</span><span class="dc-chip">3 أشهر</span></div>
-        <div class="dc-price">من 5,000 جنيه</div>
+        <div class="dc-price" data-ar="من 5,000 جنيه" data-en="From EGP 5,000">من 5,000 جنيه</div>
       </div>
       <div class="dc-reveal">
-        <div class="dcr-title">🇸🇨 سيشل</div>
+        <div class="dcr-title">🇸🇨 Seychelles / سيشل</div>
         <ul class="dcr-list">
-          <li><span>مدة التنفيذ</span><span>5 أيام ⚡</span></li>
-          <li><span>مدة التأشيرة</span><span>3 أشهر</span></li>
-          <li><span>السعر</span><span>5,000 جنيه</span></li>
+          <li><span>Processing</span><span>5 days ⚡</span></li>
+          <li><span>Validity</span><span>3 months</span></li>
+          <li><span>Docs</span><span>Passport + Photo</span></li>
+          <li><span>Price</span><span>5,000 EGP</span></li>
         </ul>
-        <a href="https://wa.me/201126672801" target="_blank" class="dcr-btn">احجز دلوقتي ✈</a>
+        <a href="https://wa.me/201126672801" target="_blank" class="dcr-btn">Book Now ✈</a>
       </div>
     </div>
 
   </div>
 </section>
 
-<!-- SERVICES -->
+<!-- SERVICES with real photos -->
 <section class="services" id="services">
-  <div class="ctr fade-in">
-    <div class="sec-eyebrow"><div class="sel"></div><span class="set">خدماتنا</span></div>
-    <h2 class="h2">أكتر من مجرد <em>تأشيرة</em></h2>
-    <p class="lead">بنقدملك حزمة متكاملة من الخدمات عشان رحلتك تبقى مثالية من الأول للآخر</p>
+  <div class="ctr ri">
+    <div class="sh"><div class="sl"></div><span class="st" data-ar="خدماتنا" data-en="Our Services">خدماتنا</span></div>
+    <h2 class="h-display" data-ar="أكتر من مجرد <em>تأشيرة</em>" data-en="More Than Just <em>a Visa</em>">أكتر من مجرد <em>تأشيرة</em></h2>
+    <p class="lead" data-ar="بنقدملك حزمة متكاملة من الخدمات عشان رحلتك تبقى مثالية من الأول للآخر" data-en="We offer a complete package of services to make your trip perfect from start to finish">بنقدملك حزمة متكاملة من الخدمات عشان رحلتك تبقى مثالية من الأول للآخر</p>
   </div>
   <div class="srv-grid">
-    <div class="srv-card fade-in">
-      <span class="srv-ico">🗂️</span>
-      <h3>تجهيز الملفات</h3>
-      <p>بنجمع ونراجع كل أوراقك عشان الملف يوصل للقنصلية بشكل صح ومن غير أي غلطة</p>
-      <ul class="srv-pts"><li>مراجعة دقيقة لكل ورقة</li><li>ترجمة وتوثيق المستندات</li><li>تنسيق مع متطلبات كل سفارة</li></ul>
-      <a href="https://wa.me/201126672801" target="_blank" class="srv-link">استفسر دلوقتي ←</a>
+
+    <div class="srv-card ri">
+      <div class="srv-photo">
+        <img src="https://images.unsplash.com/photo-1568992688065-536aad8a12f6?w=600&q=80" alt="File Preparation">
+        <div class="srv-photo-ov"></div>
+        <div class="srv-photo-ico">🗂️</div>
+      </div>
+      <div class="srv-body">
+        <h3 data-ar="تجهيز الملفات" data-en="File Preparation">تجهيز الملفات</h3>
+        <p data-ar="بنجمع ونراجع كل أوراقك عشان الملف يوصل للقنصلية بشكل صح ومن غير أي غلطة" data-en="We collect and review all your documents so your file reaches the consulate correctly and without any errors">بنجمع ونراجع كل أوراقك عشان الملف يوصل للقنصلية بشكل صح ومن غير أي غلطة</p>
+        <ul class="srv-pts">
+          <li data-ar="مراجعة دقيقة لكل ورقة" data-en="Thorough review of every document">مراجعة دقيقة لكل ورقة</li>
+          <li data-ar="ترجمة وتوثيق المستندات" data-en="Translation & attestation">ترجمة وتوثيق المستندات</li>
+          <li data-ar="تنسيق مع متطلبات كل سفارة" data-en="Tailored to each embassy's requirements">تنسيق مع متطلبات كل سفارة</li>
+        </ul>
+        <a href="https://wa.me/201126672801" target="_blank" class="srv-link" data-ar="استفسر دلوقتي ←" data-en="Enquire Now →">استفسر دلوقتي ←</a>
+      </div>
     </div>
-    <div class="srv-card fade-in">
-      <span class="srv-ico">📅</span>
-      <h3>حجز المواعيد</h3>
-      <p>بنحجزلك موعد القنصلية بأسرع وقت ممكن لكل الدول اللي بتشتغل معاها</p>
-      <ul class="srv-pts"><li>أسرع موعد متاح</li><li>تذكير قبل الموعد</li><li>إرشاد كامل ليوم السفارة</li></ul>
-      <a href="https://wa.me/201126672801" target="_blank" class="srv-link">استفسر دلوقتي ←</a>
+
+    <div class="srv-card ri">
+      <div class="srv-photo">
+        <img src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=600&q=80" alt="Appointment Booking">
+        <div class="srv-photo-ov"></div>
+        <div class="srv-photo-ico">📅</div>
+      </div>
+      <div class="srv-body">
+        <h3 data-ar="حجز المواعيد" data-en="Appointment Booking">حجز المواعيد</h3>
+        <p data-ar="بنحجزلك موعد القنصلية بأسرع وقت ممكن لكل الدول اللي بتشتغل معاها" data-en="We secure your consulate appointment as quickly as possible for all available countries">بنحجزلك موعد القنصلية بأسرع وقت ممكن لكل الدول اللي بتشتغل معاها</p>
+        <ul class="srv-pts">
+          <li data-ar="أسرع موعد متاح" data-en="Earliest available slot">أسرع موعد متاح</li>
+          <li data-ar="تذكير قبل الموعد" data-en="Reminder before appointment">تذكير قبل الموعد</li>
+          <li data-ar="إرشاد كامل ليوم السفارة" data-en="Full guidance for embassy day">إرشاد كامل ليوم السفارة</li>
+        </ul>
+        <a href="https://wa.me/201126672801" target="_blank" class="srv-link" data-ar="استفسر دلوقتي ←" data-en="Enquire Now →">استفسر دلوقتي ←</a>
+      </div>
     </div>
-    <div class="srv-card fade-in">
-      <span class="srv-ico">🗺️</span>
-      <h3>تجهيز خط السير</h3>
-      <p>بنصمملك برنامج رحلة احترافي يومي بالأماكن والفنادق والمواصلات بالتفصيل</p>
-      <ul class="srv-pts"><li>برنامج يومي مفصّل</li><li>أفضل الأماكن والمعالم</li><li>تنسيق التنقلات الداخلية</li></ul>
-      <a href="https://wa.me/201126672801" target="_blank" class="srv-link">استفسر دلوقتي ←</a>
+
+    <div class="srv-card ri">
+      <div class="srv-photo">
+        <img src="https://images.unsplash.com/photo-1503220317375-aaad61436b1b?w=600&q=80" alt="Itinerary Planning">
+        <div class="srv-photo-ov"></div>
+        <div class="srv-photo-ico">🗺️</div>
+      </div>
+      <div class="srv-body">
+        <h3 data-ar="تجهيز خط السير" data-en="Itinerary Planning">تجهيز خط السير</h3>
+        <p data-ar="بنصمملك برنامج رحلة احترافي يومي بالأماكن والفنادق والمواصلات بالتفصيل" data-en="We design a professional day-by-day itinerary with places, hotels, and transportation in detail">بنصمملك برنامج رحلة احترافي يومي بالأماكن والفنادق والمواصلات بالتفصيل</p>
+        <ul class="srv-pts">
+          <li data-ar="برنامج يومي مفصّل" data-en="Detailed daily program">برنامج يومي مفصّل</li>
+          <li data-ar="أفضل الأماكن والمعالم" data-en="Best places & attractions">أفضل الأماكن والمعالم</li>
+          <li data-ar="تنسيق التنقلات الداخلية" data-en="Internal transport coordination">تنسيق التنقلات الداخلية</li>
+        </ul>
+        <a href="https://wa.me/201126672801" target="_blank" class="srv-link" data-ar="استفسر دلوقتي ←" data-en="Enquire Now →">استفسر دلوقتي ←</a>
+      </div>
     </div>
-    <div class="srv-card fade-in">
-      <span class="srv-ico">🏨</span>
-      <h3>حجز فنادق</h3>
-      <p>فنادق مبدئية للتأشيرة أو نهائية للسفر — بنلاقيلك الأنسب لميزانيتك وخطتك</p>
-      <ul class="srv-pts"><li>حجز مبدئي للتأشيرة</li><li>حجز نهائي مع تأكيد</li><li>خيارات لكل الميزانيات</li></ul>
-      <a href="https://wa.me/201126672801" target="_blank" class="srv-link">استفسر دلوقتي ←</a>
+
+    <div class="srv-card ri">
+      <div class="srv-photo">
+        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80" alt="Hotel Booking">
+        <div class="srv-photo-ov"></div>
+        <div class="srv-photo-ico">🏨</div>
+      </div>
+      <div class="srv-body">
+        <h3 data-ar="حجز فنادق" data-en="Hotel Booking">حجز فنادق</h3>
+        <p data-ar="فنادق مبدئية للتأشيرة أو نهائية للسفر — بنلاقيلك الأنسب لميزانيتك وخطتك" data-en="Preliminary hotel reservations for visas or final bookings for travel — we find the best match for your budget">فنادق مبدئية للتأشيرة أو نهائية للسفر — بنلاقيلك الأنسب لميزانيتك وخطتك</p>
+        <ul class="srv-pts">
+          <li data-ar="حجز مبدئي للتأشيرة" data-en="Preliminary booking for visa">حجز مبدئي للتأشيرة</li>
+          <li data-ar="حجز نهائي مع تأكيد" data-en="Final booking with confirmation">حجز نهائي مع تأكيد</li>
+          <li data-ar="خيارات لكل الميزانيات" data-en="Options for all budgets">خيارات لكل الميزانيات</li>
+        </ul>
+        <a href="https://wa.me/201126672801" target="_blank" class="srv-link" data-ar="استفسر دلوقتي ←" data-en="Enquire Now →">استفسر دلوقتي ←</a>
+      </div>
     </div>
-    <div class="srv-card fade-in">
-      <span class="srv-ico">✈️</span>
-      <h3>حجز طيران</h3>
-      <p>تذاكر مبدئية للتأشيرة أو نهائية لرحلتك — بنلاقيلك أفضل الأسعار</p>
-      <ul class="srv-pts"><li>تذاكر مبدئية للتأشيرة</li><li>أفضل أسعار التذاكر</li><li>حجز مباشر وسريع</li></ul>
-      <a href="https://wa.me/201126672801" target="_blank" class="srv-link">استفسر دلوقتي ←</a>
+
+    <div class="srv-card ri">
+      <div class="srv-photo">
+        <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&q=80" alt="Flight Booking">
+        <div class="srv-photo-ov"></div>
+        <div class="srv-photo-ico">✈️</div>
+      </div>
+      <div class="srv-body">
+        <h3 data-ar="حجز طيران" data-en="Flight Booking">حجز طيران</h3>
+        <p data-ar="تذاكر مبدئية للتأشيرة أو نهائية لرحلتك — بنلاقيلك أفضل الأسعار" data-en="Preliminary tickets for visas or final tickets for travel — we find you the best prices">تذاكر مبدئية للتأشيرة أو نهائية لرحلتك — بنلاقيلك أفضل الأسعار</p>
+        <ul class="srv-pts">
+          <li data-ar="تذاكر مبدئية للتأشيرة" data-en="Preliminary tickets for visa">تذاكر مبدئية للتأشيرة</li>
+          <li data-ar="أفضل أسعار التذاكر" data-en="Best ticket prices">أفضل أسعار التذاكر</li>
+          <li data-ar="حجز مباشر وسريع" data-en="Direct and fast booking">حجز مباشر وسريع</li>
+        </ul>
+        <a href="https://wa.me/201126672801" target="_blank" class="srv-link" data-ar="استفسر دلوقتي ←" data-en="Enquire Now →">استفسر دلوقتي ←</a>
+      </div>
     </div>
-    <div class="srv-card fade-in">
-      <span class="srv-ico">🛡️</span>
-      <h3>تأمين السفر</h3>
-      <p>تأمين طبي معتمد ومطابق لمتطلبات كل سفارة بأفضل سعر ممكن</p>
-      <ul class="srv-pts"><li>تأمين طبي شامل</li><li>مطابق لمتطلبات السفارات</li><li>تغطية لكل الوجهات</li></ul>
-      <a href="https://wa.me/201126672801" target="_blank" class="srv-link">استفسر دلوقتي ←</a>
+
+    <div class="srv-card ri">
+      <div class="srv-photo">
+        <img src="https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?w=600&q=80" alt="Travel Insurance">
+        <div class="srv-photo-ov"></div>
+        <div class="srv-photo-ico">🛡️</div>
+      </div>
+      <div class="srv-body">
+        <h3 data-ar="تأمين السفر" data-en="Travel Insurance">تأمين السفر</h3>
+        <p data-ar="تأمين طبي معتمد ومطابق لمتطلبات كل سفارة بأفضل سعر ممكن" data-en="Certified medical insurance matching every embassy's requirements at the best possible price">تأمين طبي معتمد ومطابق لمتطلبات كل سفارة بأفضل سعر ممكن</p>
+        <ul class="srv-pts">
+          <li data-ar="تأمين طبي شامل" data-en="Comprehensive medical cover">تأمين طبي شامل</li>
+          <li data-ar="مطابق لمتطلبات السفارات" data-en="Embassy-approved">مطابق لمتطلبات السفارات</li>
+          <li data-ar="تغطية لكل الوجهات" data-en="Coverage for all destinations">تغطية لكل الوجهات</li>
+        </ul>
+        <a href="https://wa.me/201126672801" target="_blank" class="srv-link" data-ar="استفسر دلوقتي ←" data-en="Enquire Now →">استفسر دلوقتي ←</a>
+      </div>
     </div>
+
   </div>
 </section>
 
@@ -702,86 +732,96 @@ footer{background:#050b15;padding:4rem 5% 1.8rem;border-top:1px solid rgba(200,1
 
 <!-- VISAS -->
 <section class="visas" id="visas">
-  <div class="ctr fade-in">
-    <div class="sec-eyebrow"><div class="sel"></div><span class="set">الأسعار والتفاصيل</span></div>
-    <h2 class="h2">60+ وجهة بأسعار <em>شفافة</em></h2>
-    <p class="lead">كل التأشيرات بنشتغل عليها يومياً. دور على وجهتك وشوف التفاصيل الكاملة.</p>
+  <div class="ctr ri">
+    <div class="sh"><div class="sl"></div><span class="st" data-ar="الأسعار والتفاصيل" data-en="Prices & Details">الأسعار والتفاصيل</span></div>
+    <h2 class="h-display" data-ar="60+ وجهة بأسعار <em>شفافة</em>" data-en="60+ Destinations at <em>Clear</em> Prices">60+ وجهة بأسعار <em>شفافة</em></h2>
+    <p class="lead" data-ar="كل التأشيرات بنشتغل عليها يومياً. دور على وجهتك وشوف التفاصيل الكاملة." data-en="We work on all these visas daily. Find your destination and see full details.">كل التأشيرات بنشتغل عليها يومياً. دور على وجهتك وشوف التفاصيل الكاملة.</p>
   </div>
-  <div class="vbar fade-in">
-    <input class="vsrch" id="vs" type="text" placeholder="🔍 ابحث... تركيا، أستراليا، كوبا">
+  <div class="vbar ri">
+    <input class="vsrch" id="vs" type="text" placeholder="🔍  Search...">
     <div class="vtabs">
-      <button class="vtab on" onclick="fv('all',this)">الكل</button>
-      <button class="vtab" onclick="fv('africa',this)">🌍 أفريقيا</button>
-      <button class="vtab" onclick="fv('asia',this)">🌏 آسيا</button>
-      <button class="vtab" onclick="fv('europe',this)">🌍 أوروبا</button>
-      <button class="vtab" onclick="fv('americas',this)">🌎 الأمريكتين</button>
-      <button class="vtab" onclick="fv('oceania',this)">🌏 أوقيانوسيا</button>
-      <button class="vtab" onclick="fv('fast',this)">⚡ سريع</button>
+      <button class="vtab on" onclick="fv('all',this)" data-ar="الكل" data-en="All">الكل</button>
+      <button class="vtab" onclick="fv('africa',this)" data-ar="🌍 أفريقيا" data-en="🌍 Africa">🌍 أفريقيا</button>
+      <button class="vtab" onclick="fv('asia',this)" data-ar="🌏 آسيا" data-en="🌏 Asia">🌏 آسيا</button>
+      <button class="vtab" onclick="fv('europe',this)" data-ar="🌍 أوروبا" data-en="🌍 Europe">🌍 أوروبا</button>
+      <button class="vtab" onclick="fv('americas',this)" data-ar="🌎 الأمريكتين" data-en="🌎 Americas">🌎 الأمريكتين</button>
+      <button class="vtab" onclick="fv('oceania',this)" data-ar="🌏 أوقيانوسيا" data-en="🌏 Oceania">🌏 أوقيانوسيا</button>
+      <button class="vtab" onclick="fv('fast',this)" data-ar="⚡ سريع" data-en="⚡ Fast">⚡ سريع</button>
     </div>
   </div>
   <div class="vgrid" id="vg"></div>
-  <div class="vempty" id="ve">ما فيش نتايج. جرب كلمة تانية أو <a href="https://wa.me/201126672801" style="color:var(--gold)">تواصل معنا</a>.</div>
+  <div class="vempty" id="ve" data-ar="ما فيش نتايج." data-en="No results found.">ما فيش نتايج.</div>
 </section>
 
 <!-- HOW -->
 <section class="how" id="how">
-  <div class="ctr fade-in">
-    <div class="sec-eyebrow"><div class="sel"></div><span class="set">طريقة العمل</span></div>
-    <h2 class="h2">4 خطوات بس<br><em>وجوازك في إيدك</em></h2>
+  <div class="ctr ri">
+    <div class="sh"><div class="sl"></div><span class="st" data-ar="طريقة العمل" data-en="How It Works">طريقة العمل</span></div>
+    <h2 class="h-display" data-ar="4 خطوات بس <em>وجوازك في إيدك</em>" data-en="Just 4 Steps to <em>Your Visa</em>">4 خطوات بس <em>وجوازك في إيدك</em></h2>
   </div>
   <div class="steps">
-    <div class="stb fade-in"><div class="stn">١</div><h3>تواصل معنا</h3><p>ابعتلنا رسالة على واتساب أو املا الفورم وهنرد في أقل من ساعة</p></div>
-    <div class="stb fade-in"><div class="stn">٢</div><h3>جمع الأوراق</h3><p>بنبعتلك قايمة المستندات المطلوبة ونساعدك في تجهيزها صح</p></div>
-    <div class="stb fade-in"><div class="stn">٣</div><h3>تقديم الطلب</h3><p>بنقدم ملفك ونبعتلك تحديثات يومية على واتساب</p></div>
-    <div class="stb fade-in"><div class="stn">٤</div><h3>استلم تأشيرتك</h3><p>بمجرد القبول بنبعتلك الجواز أو تيجي تستلمه منا</p></div>
+    <div class="stb ri"><div class="stn">1</div><h3 data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</h3><p data-ar="ابعتلنا رسالة على واتساب أو املا الفورم وهنرد في أقل من ساعة" data-en="Send us a WhatsApp message or fill the form and we'll reply within an hour">ابعتلنا رسالة على واتساب أو املا الفورم وهنرد في أقل من ساعة</p></div>
+    <div class="stb ri"><div class="stn">2</div><h3 data-ar="جمع الأوراق" data-en="Documents">جمع الأوراق</h3><p data-ar="بنبعتلك قايمة المستندات المطلوبة ونساعدك في تجهيزها صح" data-en="We send you the required documents list and help you prepare them correctly">بنبعتلك قايمة المستندات المطلوبة ونساعدك في تجهيزها صح</p></div>
+    <div class="stb ri"><div class="stn">3</div><h3 data-ar="تقديم الطلب" data-en="Submit Application">تقديم الطلب</h3><p data-ar="بنقدم ملفك ونبعتلك تحديثات يومية على واتساب" data-en="We submit your file and send you daily updates on WhatsApp">بنقدم ملفك ونبعتلك تحديثات يومية على واتساب</p></div>
+    <div class="stb ri"><div class="stn">4</div><h3 data-ar="استلم تأشيرتك" data-en="Receive Visa">استلم تأشيرتك</h3><p data-ar="بمجرد القبول بنبعتلك الجواز أو تيجي تستلمه منا" data-en="Upon approval we deliver your passport or you can pick it up from us">بمجرد القبول بنبعتلك الجواز أو تيجي تستلمه منا</p></div>
   </div>
 </section>
 
 <!-- REQUEST -->
 <section class="req" id="request">
   <div class="req-g">
-    <div class="rimg fade-in">
+    <div class="rimg ri">
       <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=900&q=85" alt="">
-      <div class="rimg-b"><p>استشارة أولية</p><strong>مجانية 100% ✓</strong></div>
+      <div class="rimg-b"><p data-ar="استشارة أولية" data-en="Initial Consultation">استشارة أولية</p><strong data-ar="مجانية 100% ✓" data-en="100% Free ✓">مجانية 100% ✓</strong></div>
     </div>
-    <div class="fade-in">
-      <div class="sec-eyebrow"><div class="sel"></div><span class="set">ابدأ رحلتك</span></div>
-      <h2 class="h2">احجز <em>استشارتك</em><br>المجانية الآن</h2>
-      <p class="lead">ملي الفورم وهيتواصل معاك متخصص خلال ساعة واحدة</p>
-      <ul class="trust">
-        <li>استشارة أولية مجانية 100%</li>
-        <li>متابعة شخصية مع كل عميل</li>
-        <li>مراجعة الملف قبل التقديم</li>
-        <li>تواصل على مدار الساعة</li>
-        <li>خبرة في أكتر من 40 قنصلية</li>
+    <div class="ri">
+      <div class="sh"><div class="sl"></div><span class="st" data-ar="ابدأ رحلتك" data-en="Start Your Journey">ابدأ رحلتك</span></div>
+      <h2 class="h-display" data-ar="احجز <em>استشارتك</em><br>المجانية الآن" data-en="Book Your <em>Free</em><br>Consultation Now">احجز <em>استشارتك</em><br>المجانية الآن</h2>
+      <p class="lead" data-ar="ملي الفورم وهيتواصل معاك متخصص خلال ساعة واحدة" data-en="Fill the form and a specialist will contact you within one hour">ملي الفورم وهيتواصل معاك متخصص خلال ساعة واحدة</p>
+      <ul class="tpts">
+        <li data-ar="استشارة أولية مجانية 100%" data-en="100% Free initial consultation">استشارة أولية مجانية 100%</li>
+        <li data-ar="متابعة شخصية مع كل عميل" data-en="Personal follow-up with every client">متابعة شخصية مع كل عميل</li>
+        <li data-ar="مراجعة الملف قبل التقديم" data-en="File review before submission">مراجعة الملف قبل التقديم</li>
+        <li data-ar="تواصل على مدار الساعة" data-en="24/7 support">تواصل على مدار الساعة</li>
+        <li data-ar="خبرة في أكتر من 40 قنصلية" data-en="Experience with 40+ consulates">خبرة في أكتر من 40 قنصلية</li>
       </ul>
       <br>
       <div class="fcard">
-        <div class="ftitle">ابعت طلبك دلوقتي ✈</div>
+        <div class="ftitle" data-ar="ابعت طلبك دلوقتي ✈" data-en="Send Your Request Now ✈">ابعت طلبك دلوقتي ✈</div>
         <form onsubmit="doForm(event)">
           <div class="frow">
-            <div class="fg"><label>الاسم الأول</label><input type="text" placeholder="محمد" required></div>
-            <div class="fg"><label>اسم العيلة</label><input type="text" placeholder="أحمد" required></div>
+            <div class="fg"><label data-ar="الاسم الأول" data-en="First Name">الاسم الأول</label><input type="text" required></div>
+            <div class="fg"><label data-ar="اسم العيلة" data-en="Last Name">اسم العيلة</label><input type="text" required></div>
           </div>
-          <div class="fg"><label>رقم الواتساب</label><input type="tel" placeholder="01xxxxxxxxx" required></div>
+          <div class="fg"><label data-ar="رقم الواتساب" data-en="WhatsApp Number">رقم الواتساب</label><input type="tel" required></div>
           <div class="fg">
-            <label>الوجهة المطلوبة</label>
+            <label data-ar="الوجهة المطلوبة" data-en="Desired Destination">الوجهة المطلوبة</label>
             <select required>
-              <option value="">اختار البلد</option>
-              <optgroup label="🌍 أفريقيا"><option>كينيا 🇰🇪</option><option>أوغندا 🇺🇬</option><option>سيشل 🇸🇨</option><option>تنزانيا 🇹🇿</option><option>مدغشقر 🇲🇬</option><option>جيبوتي 🇩🇯</option><option>مالاوي 🇲🇼</option><option>توغو 🇹🇬</option><option>زامبيا 🇿🇲</option><option>بتسوانا 🇧🇼</option><option>سيراليون 🇸🇱</option><option>غينيا الاستوائية 🇬🇶</option><option>موزمبيق 🇲🇿</option><option>موريتانيا 🇲🇷</option><option>موريشيوس 🇲🇺</option></optgroup>
-              <optgroup label="🌏 آسيا"><option>تركيا 🇹🇷</option><option>البحرين 🇧🇭</option><option>جورجيا 🇬🇪</option><option>أوزبكستان 🇺🇿</option><option>تايلاند 🇹🇭</option><option>إندونيسيا 🇮🇩</option><option>سنغافورة 🇸🇬</option><option>الفلبين 🇵🇭</option><option>الصين 🇨🇳</option><option>اليابان 🇯🇵</option><option>كمبوديا 🇰🇭</option><option>نيبال 🇳🇵</option><option>لاوس 🇱🇦</option><option>ميانمار 🇲🇲</option><option>فيتنام 🇻🇳</option><option>طاجيكستان 🇹🇯</option><option>قيرغيزستان 🇰🇬</option></optgroup>
-              <optgroup label="🌎 الأمريكتين"><option>كوبا 🇨🇺</option><option>سورينام 🇸🇷</option><option>جزر البهاما 🇧🇸</option><option>كولومبيا 🇨🇴</option><option>البرازيل 🇧🇷</option><option>بوليفيا 🇧🇴</option><option>سانت كيتس ونيفيس 🇰🇳</option><option>ترينيداد وتوباغو 🇹🇹</option><option>أنتيغوا وبربودا 🇦🇬</option><option>غويانا 🇬🇾</option></optgroup>
-              <optgroup label="🌏 أوقيانوسيا"><option>أستراليا 🇦🇺</option><option>نيوزيلندا 🇳🇿</option></optgroup>
-              <optgroup label="🌍 أوروبا"><option>ألبانيا 🇦🇱</option></optgroup>
+              <option value="" data-ar="اختار البلد" data-en="Select Country">اختار البلد</option>
+              <optgroup label="🌍 Africa / أفريقيا"><option>Kenya 🇰🇪</option><option>Uganda 🇺🇬</option><option>Seychelles 🇸🇨</option><option>Tanzania 🇹🇿</option><option>Madagascar 🇲🇬</option><option>Djibouti 🇩🇯</option><option>Malawi 🇲🇼</option><option>Togo 🇹🇬</option><option>Zambia 🇿🇲</option><option>Botswana 🇧🇼</option><option>Sierra Leone 🇸🇱</option><option>Equatorial Guinea 🇬🇶</option><option>Mozambique 🇲🇿</option><option>Mauritania 🇲🇷</option><option>Mauritius 🇲🇺</option></optgroup>
+              <optgroup label="🌏 Asia / آسيا"><option>Turkey 🇹🇷</option><option>Bahrain 🇧🇭</option><option>Georgia 🇬🇪</option><option>Uzbekistan 🇺🇿</option><option>Thailand 🇹🇭</option><option>Indonesia 🇮🇩</option><option>Singapore 🇸🇬</option><option>Philippines 🇵🇭</option><option>China 🇨🇳</option><option>Japan 🇯🇵</option><option>Cambodia 🇰🇭</option><option>Nepal 🇳🇵</option><option>Laos 🇱🇦</option><option>Myanmar 🇲🇲</option><option>Vietnam 🇻🇳</option><option>Tajikistan 🇹🇯</option><option>Kyrgyzstan 🇰🇬</option></optgroup>
+              <optgroup label="🌎 Americas / الأمريكتين"><option>Cuba 🇨🇺</option><option>Suriname 🇸🇷</option><option>Bahamas 🇧🇸</option><option>Colombia 🇨🇴</option><option>Brazil 🇧🇷</option><option>Bolivia 🇧🇴</option><option>Saint Kitts 🇰🇳</option><option>Trinidad & Tobago 🇹🇹</option><option>Antigua 🇦🇬</option><option>Guyana 🇬🇾</option></optgroup>
+              <optgroup label="🌏 Oceania / أوقيانوسيا"><option>Australia 🇦🇺</option><option>New Zealand 🇳🇿</option></optgroup>
+              <optgroup label="🌍 Europe / أوروبا"><option>Albania 🇦🇱</option></optgroup>
             </select>
           </div>
           <div class="frow">
-            <div class="fg"><label>عدد المسافرين</label><select><option>1 شخص</option><option>2 شخص</option><option>3-4 أشخاص</option><option>+5 أشخاص</option></select></div>
-            <div class="fg"><label>موعد السفر</label><select><option>خلال شهر</option><option>1-3 شهور</option><option>+3 شهور</option></select></div>
+            <div class="fg">
+              <label data-ar="عدد المسافرين" data-en="Travellers">عدد المسافرين</label>
+              <select><option>1</option><option>2</option><option>3-4</option><option>5+</option></select>
+            </div>
+            <div class="fg">
+              <label data-ar="موعد السفر" data-en="Travel Date">موعد السفر</label>
+              <select>
+                <option data-ar="خلال شهر" data-en="Within 1 month">خلال شهر</option>
+                <option data-ar="1-3 شهور" data-en="1-3 months">1-3 شهور</option>
+                <option data-ar="+3 شهور" data-en="3+ months">+3 شهور</option>
+              </select>
+            </div>
           </div>
           <button type="submit" class="fsub" id="fsb">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M21 3L3 10.5l6.75 2.25L12 21l3-6.75L21 3z"/></svg>
-            ابعت الطلب
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M21 3L3 10.5l6.75 2.25L12 21l3-6.75L21 3z"/></svg>
+            <span data-ar="ابعت الطلب" data-en="Send Request">ابعت الطلب</span>
           </button>
         </form>
       </div>
@@ -791,39 +831,39 @@ footer{background:#050b15;padding:4rem 5% 1.8rem;border-top:1px solid rgba(200,1
 
 <!-- TESTIMONIALS -->
 <section class="testi" id="testi">
-  <div class="ctr fade-in">
-    <div class="sec-eyebrow"><div class="sel"></div><span class="set">آراء العملاء</span></div>
-    <h2 class="h2">بيحكوا <em>عنا</em></h2>
-    <p class="lead">أكتر من 5000 عميل وثقوا فينا.</p>
+  <div class="ctr ri">
+    <div class="sh"><div class="sl"></div><span class="st" data-ar="آراء العملاء" data-en="Testimonials">آراء العملاء</span></div>
+    <h2 class="h-display" data-ar="بيحكوا <em>عنا</em>" data-en="What They <em>Say</em>">بيحكوا <em>عنا</em></h2>
   </div>
   <div class="tg">
-    <div class="tc fade-in"><div class="stars">★★★★★</div><p>الحمد لله جت التأشيرة في وقتها بالظبط! الفريق كان متابع معايا خطوة بخطوة. تركيا في يوم واحد فعلاً!</p><div class="ta"><div class="tav">👩</div><div><div class="ta-n">نورا سامي</div><div class="ta-d">تأشيرة تركيا 🇹🇷</div></div></div></div>
-    <div class="tc fade-in"><div class="stars">★★★★★</div><p>أول مرة أعمل تأشيرة أفريقيا وكنت خايف. مع Colonel Tours الموضوع اتبسط ووصلت كينيا بدون أي مشاكل.</p><div class="ta"><div class="tav">👨</div><div><div class="ta-n">كريم عادل</div><div class="ta-d">تأشيرة كينيا 🇰🇪</div></div></div></div>
-    <div class="tc fade-in"><div class="stars">★★★★★</div><p>عملت تأشيرة عائلية لـ 4 أشخاص لسيشل وجت كلها في نفس الوقت. الاحترافية واضحة جداً. هرجع تاني.</p><div class="ta"><div class="tav">👨‍👩‍👧</div><div><div class="ta-n">أسرة المحمدي</div><div class="ta-d">تأشيرة سيشل 🇸🇨</div></div></div></div>
+    <div class="tc ri"><div class="stars">★★★★★</div><p data-ar="الحمد لله جت التأشيرة في وقتها بالظبط! الفريق كان متابع معايا خطوة بخطوة. تركيا في يوم واحد فعلاً!" data-en="Alhamdulillah the visa came exactly on time! The team followed up with me step by step. Turkey in one day — truly amazing!">الحمد لله جت التأشيرة في وقتها بالظبط! الفريق كان متابع معايا خطوة بخطوة. تركيا في يوم واحد فعلاً!</p><div class="ta"><div class="tav">👩</div><div><div class="ta-n">نورا سامي / Noura Sami</div><div class="ta-d">Turkey 🇹🇷</div></div></div></div>
+    <div class="tc ri"><div class="stars">★★★★★</div><p data-ar="أول مرة أعمل تأشيرة أفريقيا وكنت خايف. مع Colonel Tours الموضوع اتبسط ووصلت كينيا بدون أي مشاكل." data-en="First time applying for an African visa and I was nervous. With Colonel Tours everything was smooth and I arrived in Kenya without any issues.">أول مرة أعمل تأشيرة أفريقيا وكنت خايف. مع Colonel Tours الموضوع اتبسط ووصلت كينيا بدون أي مشاكل.</p><div class="ta"><div class="tav">👨</div><div><div class="ta-n">كريم عادل / Karim Adel</div><div class="ta-d">Kenya 🇰🇪</div></div></div></div>
+    <div class="tc ri"><div class="stars">★★★★★</div><p data-ar="عملت تأشيرة عائلية لـ 4 أشخاص لسيشل وجت كلها في نفس الوقت. الاحترافية واضحة جداً." data-en="I got a family visa for 4 people to Seychelles and they all came at the same time. The professionalism is outstanding.">عملت تأشيرة عائلية لـ 4 أشخاص لسيشل وجت كلها في نفس الوقت. الاحترافية واضحة جداً.</p><div class="ta"><div class="tav">👨‍👩‍👧</div><div><div class="ta-n">أسرة المحمدي / Al-Mohammadi Family</div><div class="ta-d">Seychelles 🇸🇨</div></div></div></div>
   </div>
 </section>
 
 <!-- CONTACT BAND -->
 <div class="cband" id="contact">
-  <div class="cband-bg"></div><div class="cband-ov"></div>
+  <div class="cband-bg"><img src="https://images.unsplash.com/photo-1540339832862-474599807836?w=1600&q=70" alt=""></div>
+  <div class="cband-ov"></div>
   <div class="cband-in">
     <div>
-      <h2>تواصل معنا <em>دلوقتي</em></h2>
-      <div class="cband-sub">بنرد على كل الاستفسارات في أقل وقت ممكن</div>
+      <h2 data-ar="تواصل معنا <em>دلوقتي</em>" data-en="Contact Us <em>Today</em>">تواصل معنا <em>دلوقتي</em></h2>
+      <div class="cband-sub" data-ar="بنرد على كل الاستفسارات في أقل وقت ممكن" data-en="We respond to all enquiries as quickly as possible">بنرد على كل الاستفسارات في أقل وقت ممكن</div>
     </div>
     <div class="cms">
       <a href="https://wa.me/201126672801" target="_blank" class="cm wa">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        واتساب: 01126672801
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp: 01126672801
       </a>
       <a href="https://www.facebook.com/coloneltours1" target="_blank" class="cm">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="white"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>فيسبوك
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>Facebook
       </a>
       <a href="https://www.instagram.com/coloneltour" target="_blank" class="cm">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>انستجرام
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>Instagram
       </a>
       <a href="mailto:coloneltours.eg@gmail.com" class="cm">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="white"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>إيميل
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>Email
       </a>
     </div>
   </div>
@@ -833,168 +873,247 @@ footer{background:#050b15;padding:4rem 5% 1.8rem;border-top:1px solid rgba(200,1
 <footer>
   <div class="ftop">
     <div>
-      <div class="flogo">
-        <img src="logo-white.png" alt="Colonel Tours">
-        <div><strong>Colonel Tours</strong><em>EXPERIENCE LUXURY TRAVEL</em></div>
-      </div>
-      <p class="fbp">متخصصون في التأشيرات السياحية منذ أكثر من 10 سنوات. بنساعد المصريين يسافروا لأكتر من 60 وجهة حول العالم.</p>
+      <div class="flogo"><img src="logo-white.png" alt="Colonel Tours"><div><strong>Colonel Tours</strong><em>Experience Luxury Travel</em></div></div>
+      <p class="fbp" data-ar="متخصصون في التأشيرات السياحية منذ أكثر من 10 سنوات." data-en="Tourism visa specialists for over 10 years. Helping Egyptians travel to 60+ destinations worldwide.">متخصصون في التأشيرات السياحية منذ أكثر من 10 سنوات.</p>
       <div class="soc">
         <a href="https://www.facebook.com/coloneltours1" target="_blank"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
         <a href="https://www.instagram.com/coloneltour" target="_blank"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
         <a href="https://wa.me/201126672801" target="_blank"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
       </div>
     </div>
-    <div class="fc"><h4>الوجهات</h4><ul><li><a href="#">كوبا 🇨🇺</a></li><li><a href="#">جورجيا 🇬🇪</a></li><li><a href="#">سيشل 🇸🇨</a></li><li><a href="#">كينيا 🇰🇪</a></li><li><a href="#">البحرين 🇧🇭</a></li><li><a href="#visas">كل الوجهات...</a></li></ul></div>
-    <div class="fc"><h4>خدماتنا</h4><ul><li><a href="#">تجهيز ملفات</a></li><li><a href="#">حجز مواعيد</a></li><li><a href="#">خط سير</a></li><li><a href="#">حجز فنادق</a></li><li><a href="#">حجز طيران</a></li></ul></div>
-    <div class="fc"><h4>تواصل</h4><ul><li><a href="https://wa.me/201126672801">📱 01126672801</a></li><li><a href="mailto:coloneltours.eg@gmail.com">✉ coloneltours.eg</a></li><li><a href="https://www.facebook.com/coloneltours1">📘 coloneltours1</a></li><li><a href="https://www.instagram.com/coloneltour">📷 coloneltour</a></li></ul></div>
+    <div class="fc"><h4 data-ar="الوجهات" data-en="Destinations">الوجهات</h4><ul><li><a href="#">Cuba 🇨🇺</a></li><li><a href="#">Georgia 🇬🇪</a></li><li><a href="#">Seychelles 🇸🇨</a></li><li><a href="#">Kenya 🇰🇪</a></li><li><a href="#">Bahrain 🇧🇭</a></li><li><a href="#visas" data-ar="كل الوجهات..." data-en="All Destinations...">كل الوجهات...</a></li></ul></div>
+    <div class="fc"><h4 data-ar="خدماتنا" data-en="Services">خدماتنا</h4><ul>
+      <li><a href="#" data-ar="تجهيز ملفات" data-en="File Preparation">تجهيز ملفات</a></li>
+      <li><a href="#" data-ar="حجز مواعيد" data-en="Appointments">حجز مواعيد</a></li>
+      <li><a href="#" data-ar="خط سير" data-en="Itinerary">خط سير</a></li>
+      <li><a href="#" data-ar="حجز فنادق" data-en="Hotels">حجز فنادق</a></li>
+      <li><a href="#" data-ar="حجز طيران" data-en="Flights">حجز طيران</a></li>
+    </ul></div>
+    <div class="fc"><h4 data-ar="تواصل" data-en="Contact">تواصل</h4><ul>
+      <li><a href="https://wa.me/201126672801">📱 01126672801</a></li>
+      <li><a href="mailto:coloneltours.eg@gmail.com">✉ coloneltours.eg</a></li>
+      <li><a href="https://www.facebook.com/coloneltours1">📘 coloneltours1</a></li>
+      <li><a href="https://www.instagram.com/coloneltour">📷 coloneltour</a></li>
+    </ul></div>
   </div>
-  <div class="fbot"><p>© 2025 <span>Colonel Tours</span>. جميع الحقوق محفوظة.</p><p>Experience <span>Luxury</span> Travel ✈️</p></div>
+  <div class="fbot"><p>© 2025 <span>Colonel Tours</span>. All rights reserved.</p><p>Experience <span>Luxury</span> Travel ✈️</p></div>
 </footer>
 
 <!-- WA FLOAT -->
-<div class="wafl">
-  <a href="https://wa.me/201126672801" target="_blank">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-    تواصل معنا
-  </a>
-</div>
+<div class="wafl"><a href="https://wa.me/201126672801" target="_blank"><svg width="19" height="19" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg><span data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</span></a></div>
 
 <script>
+/* ── LANG TOGGLE ── */
+let isAR = true;
+function toggleLang() {
+  isAR = !isAR;
+  const html = document.getElementById('html-root');
+  const btn = document.getElementById('langBtn');
+  if (isAR) {
+    html.setAttribute('lang','ar'); html.setAttribute('dir','rtl');
+    btn.textContent = 'EN';
+    document.title = 'Colonel Tours – Experience Luxury Travel';
+  } else {
+    html.setAttribute('lang','en'); html.setAttribute('dir','ltr');
+    btn.textContent = 'عر';
+    document.title = 'Colonel Tours – Experience Luxury Travel';
+  }
+  // Swap all data-ar / data-en text
+  document.querySelectorAll('[data-ar][data-en]').forEach(el => {
+    const txt = isAR ? el.getAttribute('data-ar') : el.getAttribute('data-en');
+    if (txt) {
+      if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+        el.placeholder = txt;
+      } else {
+        el.innerHTML = txt;
+      }
+    }
+  });
+  // Re-render visa cards with updated labels
+  apply();
+}
+
 /* ── STARS ── */
 (()=>{
-  const c=document.getElementById('stars');
-  if(!c) return;
-  for(let i=0;i<70;i++){
-    const s=document.createElement('div');
-    s.className='star';
-    s.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;--t:${2+Math.random()*4}s;animation-delay:${Math.random()*5}s;opacity:${.2+Math.random()*.5};width:${1+Math.random()*2}px;height:${1+Math.random()*2}px;`;
+  const c = document.getElementById('stars');
+  if (!c) return;
+  for (let i = 0; i < 65; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    s.style.cssText = `left:${Math.random()*100}%;top:${Math.random()*100}%;--t:${2+Math.random()*4}s;animation-delay:${Math.random()*5}s;opacity:${.15+Math.random()*.5};width:${1+Math.random()*2}px;height:${1+Math.random()*2}px;`;
     c.appendChild(s);
   }
 })();
 
 /* ── NAV ── */
-window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('stuck',scrollY>40));
-document.querySelector('.burger').onclick=()=>document.getElementById('nl').classList.toggle('open');
+window.addEventListener('scroll', () => document.getElementById('nav').classList.toggle('stuck', scrollY > 40));
 
-/* ── SCROLL REVEAL ──
-   Using simple IntersectionObserver with generous rootMargin.
-   All .fade-in elements start opacity:0 and become visible when in viewport.
-   Fallback: force-show after 2.5s in case observer fails.
-── */
-const revealObs = new IntersectionObserver((entries) => {
-  entries.forEach((entry, i) => {
-    if (entry.isIntersecting) {
-      setTimeout(() => entry.target.classList.add('visible'), i * 60);
-      revealObs.unobserve(entry.target);
-    }
+/* ── REVEAL ── */
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) { setTimeout(() => e.target.classList.add('on'), i * 55); obs.unobserve(e.target); }
   });
 }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
-
-document.querySelectorAll('.fade-in').forEach(el => revealObs.observe(el));
-
-// Failsafe: show everything after 2.5s
-setTimeout(() => {
-  document.querySelectorAll('.fade-in:not(.visible)').forEach(el => el.classList.add('visible'));
-}, 2500);
+document.querySelectorAll('.ri').forEach(el => obs.observe(el));
+setTimeout(() => document.querySelectorAll('.ri:not(.on)').forEach(el => el.classList.add('on')), 2500);
 
 /* ── VISA DATA ── */
+const IMGS = {
+  '🇺🇬':'https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=400&q=70',
+  '🇹🇿':'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=400&q=70',
+  '🇲🇬':'https://images.unsplash.com/photo-1587474260584-136574528ed5?w=400&q=70',
+  '🇩🇯':'https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=400&q=70',
+  '🇲🇼':'https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=400&q=70',
+  '🇹🇬':'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=400&q=70',
+  '🇿🇲':'https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=400&q=70',
+  '🇧🇼':'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=400&q=70',
+  '🇸🇱':'https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=400&q=70',
+  '🇬🇶':'https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=400&q=70',
+  '🇲🇿':'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=400&q=70',
+  '🇲🇷':'https://images.unsplash.com/photo-1587474260584-136574528ed5?w=400&q=70',
+  '🇸🇨':'https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=400&q=70',
+  '🇲🇺':'https://images.unsplash.com/photo-1596386461350-326ccb383e9f?w=400&q=70',
+  '🇰🇪':'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=400&q=70',
+  '🇹🇷':'https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=400&q=70',
+  '🇧🇭':'https://images.unsplash.com/photo-1559628233-100c798642d8?w=400&q=70',
+  '🇬🇪':'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=70',
+  '🇺🇿':'https://images.unsplash.com/photo-1570660967346-7f40fce84cf2?w=400&q=70',
+  '🇹🇭':'https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=400&q=70',
+  '🇮🇩':'https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=400&q=70',
+  '🇸🇬':'https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=400&q=70',
+  '🇵🇭':'https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?w=400&q=70',
+  '🇨🇳':'https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=400&q=70',
+  '🇯🇵':'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=400&q=70',
+  '🇰🇭':'https://images.unsplash.com/photo-1539367628448-4bc5c9d171c8?w=400&q=70',
+  '🇳🇵':'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=70',
+  '🇱🇦':'https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=400&q=70',
+  '🇲🇲':'https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=400&q=70',
+  '🇻🇳':'https://images.unsplash.com/photo-1540611025311-01df3cef54b5?w=400&q=70',
+  '🇹🇯':'https://images.unsplash.com/photo-1570660967346-7f40fce84cf2?w=400&q=70',
+  '🇰🇬':'https://images.unsplash.com/photo-1570660967346-7f40fce84cf2?w=400&q=70',
+  '🇦🇱':'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=70',
+  '🇨🇺':'https://images.unsplash.com/photo-1500759285222-a95626b934cb?w=400&q=70',
+  '🇸🇷':'https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=400&q=70',
+  '🇧🇸':'https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=400&q=70',
+  '🇨🇴':'https://images.unsplash.com/photo-1569361803834-2b25aad3a3ae?w=400&q=70',
+  '🇧🇷':'https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=400&q=70',
+  '🇧🇴':'https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=400&q=70',
+  '🇰🇳':'https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=400&q=70',
+  '🇹🇹':'https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=400&q=70',
+  '🇦🇬':'https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=400&q=70',
+  '🇬🇾':'https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=400&q=70',
+  '🇦🇺':'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=70',
+  '🇳🇿':'https://images.unsplash.com/photo-1507699622108-4be3abd695ad?w=400&q=70',
+};
+
 const VD=[
-  // AFRICA
-  {c:"أوغندا",f:"🇺🇬",r:"africa",d:"10 أيام",dur:"3 أشهر",doc:"صورة جواز + صورة شخصية",p:"5,500",fast:false},
-  {c:"تنزانيا",f:"🇹🇿",r:"africa",d:"15 يوم",dur:"3 أشهر",doc:"صورة جواز + صورة شخصية",p:"5,500",fast:false},
-  {c:"مدغشقر",f:"🇲🇬",r:"africa",d:"5 أيام",dur:"شهر",doc:"صورة جواز + صورة شخصية",p:"4,500",fast:true},
-  {c:"جيبوتي (15 يوم)",f:"🇩🇯",r:"africa",d:"5 أيام",dur:"15 يوم",doc:"صورة جواز + صورة شخصية",p:"2,500",fast:true},
-  {c:"جيبوتي (3 أشهر)",f:"🇩🇯",r:"africa",d:"5 أيام",dur:"3 أشهر",doc:"صورة جواز + صورة شخصية",p:"4,500",fast:true},
-  {c:"مالاوي (شهر)",f:"🇲🇼",r:"africa",d:"10 أيام",dur:"شهر",doc:"صورة جواز + صورة شخصية",p:"5,500",fast:false},
-  {c:"مالاوي (3 أشهر)",f:"🇲🇼",r:"africa",d:"10 أيام",dur:"3 أشهر",doc:"صورة جواز + صورة شخصية",p:"10,500",fast:false},
-  {c:"توغو (شهر)",f:"🇹🇬",r:"africa",d:"10 أيام",dur:"شهر",doc:"صورة جواز + صورة شخصية",p:"6,500",fast:false},
-  {c:"توغو (3 أشهر)",f:"🇹🇬",r:"africa",d:"10 أيام",dur:"3 أشهر",doc:"صورة جواز + صورة شخصية",p:"8,500",fast:false},
-  {c:"زامبيا",f:"🇿🇲",r:"africa",d:"7 أيام",dur:"3 أشهر",doc:"صورة جواز + صورة شخصية",p:"3,700",fast:false},
-  {c:"بتسوانا (شهر)",f:"🇧🇼",r:"africa",d:"5 أيام",dur:"شهر",doc:"صورة جواز + صورة شخصية",p:"5,000",fast:true},
-  {c:"بتسوانا (3 أشهر)",f:"🇧🇼",r:"africa",d:"5 أيام",dur:"3 أشهر",doc:"صورة جواز + صورة شخصية",p:"6,500",fast:true},
-  {c:"سيراليون",f:"🇸🇱",r:"africa",d:"10 أيام",dur:"شهر",doc:"صورة جواز + صورة شخصية",p:"5,500",fast:false},
-  {c:"غينيا الاستوائية",f:"🇬🇶",r:"africa",d:"5 أيام",dur:"3 أشهر",doc:"صورة جواز + صورة شخصية",p:"7,500",fast:true},
-  {c:"موزمبيق",f:"🇲🇿",r:"africa",d:"10 أيام",dur:"شهر",doc:"صورة جواز + صورة شخصية",p:"6,500",fast:false},
-  {c:"موريتانيا",f:"🇲🇷",r:"africa",d:"10 أيام",dur:"3 أشهر",doc:"صورة جواز + صورة شخصية",p:"6,000",fast:false},
-  {c:"سيشل",f:"🇸🇨",r:"africa",d:"5 أيام",dur:"3 أشهر",doc:"صورة جواز + صورة شخصية",p:"5,000",fast:true},
-  {c:"موريشيوس",f:"🇲🇺",r:"africa",d:"5 أيام",dur:"3 أشهر",doc:"صورة جواز + صورة شخصية",p:"4,500",fast:true},
-  {c:"كينيا",f:"🇰🇪",r:"africa",d:"7 أيام",dur:"3 أشهر",doc:"صورة جواز + صورة شخصية",p:"5,000",fast:false},
-  // ASIA
-  {c:"تركيا",f:"🇹🇷",r:"asia",d:"ساعة ⚡",dur:"شهر",doc:"صورة جواز + صورة شخصية",p:"2,950",fast:true},
-  {c:"البحرين (أسبوعين)",f:"🇧🇭",r:"asia",d:"7 أيام",dur:"أسبوعين",doc:"صورة جواز + كشف حساب",p:"3,700",fast:false},
-  {c:"البحرين (3 أشهر)",f:"🇧🇭",r:"asia",d:"7 أيام",dur:"3 أشهر",doc:"صورة جواز + كشف حساب",p:"4,700",fast:false},
-  {c:"البحرين (سنة)",f:"🇧🇭",r:"asia",d:"7 أيام",dur:"سنة",doc:"صورة جواز + كشف حساب",p:"9,000",fast:false},
-  {c:"جورجيا",f:"🇬🇪",r:"asia",d:"7 أيام",dur:"شهر",doc:"صورة جواز + صورة شخصية",p:"2,800",fast:false},
-  {c:"أوزبكستان",f:"🇺🇿",r:"asia",d:"5 أيام",dur:"شهر",doc:"صورة جواز + صورة شخصية",p:"3,500",fast:true},
-  {c:"تايلاند",f:"🇹🇭",r:"asia",d:"15 يوم",dur:"شهرين",doc:"جواز + صورة + خطاب عمل مترجم + تأمين + كشف حساب 3 شهور",p:"3,500",fast:false},
-  {c:"إندونيسيا",f:"🇮🇩",r:"asia",d:"5 أيام",dur:"شهر",doc:"صورة جواز + صورة شخصية",p:"4,000",fast:true},
-  {c:"سنغافورة",f:"🇸🇬",r:"asia",d:"7 أيام",dur:"شهر",doc:"صورة جواز + صورة شخصية + كشف حساب",p:"5,500",fast:false},
-  {c:"الفلبين",f:"🇵🇭",r:"asia",d:"7 أيام",dur:"30 يوم",doc:"صورة جواز + صورة شخصية",p:"5,500",fast:false},
-  {c:"الصين",f:"🇨🇳",r:"asia",d:"10 أيام",dur:"حسب السفارة",doc:"جواز + صورة + كشف حساب + خطاب وظيفي (تقديم بالسفارة)",p:"2,500 تجهيز ملف",fast:false},
-  {c:"اليابان",f:"🇯🇵",r:"asia",d:"10 أيام",dur:"حسب السفارة",doc:"جواز + كشف 6 أشهر + صورة + خطاب عمل + تأمين (تقديم بالسفارة)",p:"2,500 + 26$ رسوم",fast:false},
-  {c:"كمبوديا",f:"🇰🇭",r:"asia",d:"7 أيام",dur:"شهر",doc:"صورة جواز + صورة شخصية",p:"3,700",fast:false},
-  {c:"نيبال",f:"🇳🇵",r:"asia",d:"5 أيام",dur:"شهر",doc:"صورة جواز + صورة شخصية",p:"5,000",fast:true},
-  {c:"لاوس",f:"🇱🇦",r:"asia",d:"10 أيام",dur:"شهر",doc:"صورة جواز + صورة شخصية",p:"5,000",fast:false},
-  {c:"ميانمار",f:"🇲🇲",r:"asia",d:"5 أيام",dur:"شهر",doc:"صورة جواز + صورة شخصية",p:"5,000",fast:true},
-  {c:"فيتنام (مرة)",f:"🇻🇳",r:"asia",d:"10 أيام",dur:"شهر",doc:"صورة جواز + صورة شخصية",p:"4,500",fast:false},
-  {c:"فيتنام (متعددة)",f:"🇻🇳",r:"asia",d:"10 أيام",dur:"شهر",doc:"صورة جواز + صورة شخصية",p:"6,500",fast:false},
-  {c:"طاجيكستان",f:"🇹🇯",r:"asia",d:"14 يوم",dur:"شهرين",doc:"صورة جواز + صورة شخصية",p:"3,700",fast:false},
-  {c:"قيرغيزستان",f:"🇰🇬",r:"asia",d:"15 يوم",dur:"شهر",doc:"صورة جواز + صورة شخصية",p:"5,500",fast:false},
-  // EUROPE
-  {c:"تركيا",f:"🇹🇷",r:"europe",d:"ساعة ⚡",dur:"شهر",doc:"صورة جواز + صورة شخصية",p:"2,950",fast:true},
-  {c:"ألبانيا",f:"🇦🇱",r:"europe",d:"25 يوم",dur:"شهر",doc:"جواز + صورة + خطاب وظيفي + كشف بنكي 12 شهر",p:"5,500 تقديم + 7,000 قبول",fast:false},
-  // AMERICAS
-  {c:"كوبا (مصريين)",f:"🇨🇺",r:"americas",d:"48 ساعة",dur:"3 أشهر",doc:"صورة جواز السفر",p:"7,000",fast:true},
-  {c:"كوبا (غير مصريين)",f:"🇨🇺",r:"americas",d:"48 ساعة",dur:"3 أشهر",doc:"صورة جواز السفر",p:"10,000",fast:true},
-  {c:"سورينام (مصريين)",f:"🇸🇷",r:"americas",d:"15 يوم",dur:"3 أشهر",doc:"جواز + صورة + خطاب وظيفي + كشف حساب",p:"9,000",fast:false},
-  {c:"سورينام (غير مصريين)",f:"🇸🇷",r:"americas",d:"48 ساعة",dur:"3 أشهر",doc:"صورة جواز + صورة شخصية",p:"9,000",fast:true},
-  {c:"جزر البهاما",f:"🇧🇸",r:"americas",d:"20 يوم",dur:"3 أشهر",doc:"جواز + صورة + خطاب وظيفي + كشف حساب + فيش جنائي + كشف طبي",p:"10,500 تقديم + 4,000 قبول",fast:false},
-  {c:"كولومبيا",f:"🇨🇴",r:"americas",d:"20 يوم",dur:"3 أشهر",doc:"جواز + صورة + كشف حساب + خطاب عمل أو سجل تجاري",p:"6,500 تقديم + 8,500 قبول",fast:false},
-  {c:"البرازيل",f:"🇧🇷",r:"americas",d:"حسب الموعد",dur:"حسب السفارة",doc:"جواز + صورة + كشف حساب + خطاب عمل + تأمين + فيش جنائي + شهادة تحركات",p:"4,000 + 80$ رسوم",fast:false},
-  {c:"بوليفيا",f:"🇧🇴",r:"americas",d:"7-10 أيام",dur:"حسب السفارة",doc:"جواز + صورة + كشف حساب + خطاب عمل + تأمين (تقديم بالسفارة)",p:"2,500",fast:false},
-  {c:"سانت كيتس ونيفيس",f:"🇰🇳",r:"americas",d:"15 يوم",dur:"3 أشهر",doc:"جواز + صورة + كشف حساب + خطاب وظيفي",p:"8,000 تقديم + 5,000 قبول",fast:false},
-  {c:"ترينيداد وتوباغو",f:"🇹🇹",r:"americas",d:"15 يوم",dur:"3 أشهر",doc:"جواز + صورة + كشف 6 شهور + خطاب عمل أو سجل تجاري + تأمين",p:"6,000 تقديم + 5,000 قبول",fast:false},
-  {c:"أنتيغوا وبربودا",f:"🇦🇬",r:"americas",d:"15 يوم",dur:"شهر",doc:"جواز + صورة + كشف 6 شهور + خطاب عمل + فيش جنائي (مترجمة)",p:"6,000 تقديم + 5,000 قبول",fast:false},
-  {c:"غويانا",f:"🇬🇾",r:"americas",d:"15 يوم",dur:"3 أشهر",doc:"جواز + صورة + كشف 6 شهور + خطاب عمل + فيش جنائي",p:"6,500 + 25$ مطار",fast:false},
-  // OCEANIA
-  {c:"أستراليا (إلكترونية)",f:"🇦🇺",r:"oceania",d:"من 30 يوم",dur:"سنة متعددة",doc:"جواز + صورة + إثبات مالي + تأمين طبي + أملاك في مصر",p:"13,000 تقديم + 4,000 قبول",fast:false},
-  {c:"نيوزيلندا (إلكترونية)",f:"🇳🇿",r:"oceania",d:"30 يوم عمل",dur:"حسب السفارة",doc:"جواز + صورة + إثبات مالي + تأمين طبي + أملاك في مصر + تأشيرات سابقة",p:"20,000 تقديم + 4,000 قبول",fast:false},
+  {c:"أوغندا / Uganda",f:"🇺🇬",r:"africa",d:"10 أيام",dur:"3 أشهر",doc:"جواز + صورة",p:"5,500",fast:false},
+  {c:"تنزانيا / Tanzania",f:"🇹🇿",r:"africa",d:"15 يوم",dur:"3 أشهر",doc:"جواز + صورة",p:"5,500",fast:false},
+  {c:"مدغشقر / Madagascar",f:"🇲🇬",r:"africa",d:"5 أيام",dur:"شهر",doc:"جواز + صورة",p:"4,500",fast:true},
+  {c:"جيبوتي 15 يوم",f:"🇩🇯",r:"africa",d:"5 أيام",dur:"15 يوم",doc:"جواز + صورة",p:"2,500",fast:true},
+  {c:"جيبوتي 3 أشهر",f:"🇩🇯",r:"africa",d:"5 أيام",dur:"3 أشهر",doc:"جواز + صورة",p:"4,500",fast:true},
+  {c:"مالاوي شهر",f:"🇲🇼",r:"africa",d:"10 أيام",dur:"شهر",doc:"جواز + صورة",p:"5,500",fast:false},
+  {c:"مالاوي 3 أشهر",f:"🇲🇼",r:"africa",d:"10 أيام",dur:"3 أشهر",doc:"جواز + صورة",p:"10,500",fast:false},
+  {c:"توغو شهر",f:"🇹🇬",r:"africa",d:"10 أيام",dur:"شهر",doc:"جواز + صورة",p:"6,500",fast:false},
+  {c:"توغو 3 أشهر",f:"🇹🇬",r:"africa",d:"10 أيام",dur:"3 أشهر",doc:"جواز + صورة",p:"8,500",fast:false},
+  {c:"زامبيا / Zambia",f:"🇿🇲",r:"africa",d:"7 أيام",dur:"3 أشهر",doc:"جواز + صورة",p:"3,700",fast:false},
+  {c:"بتسوانا شهر",f:"🇧🇼",r:"africa",d:"5 أيام",dur:"شهر",doc:"جواز + صورة",p:"5,000",fast:true},
+  {c:"بتسوانا 3 أشهر",f:"🇧🇼",r:"africa",d:"5 أيام",dur:"3 أشهر",doc:"جواز + صورة",p:"6,500",fast:true},
+  {c:"سيراليون / Sierra Leone",f:"🇸🇱",r:"africa",d:"10 أيام",dur:"شهر",doc:"جواز + صورة",p:"5,500",fast:false},
+  {c:"غينيا الاستوائية",f:"🇬🇶",r:"africa",d:"5 أيام",dur:"3 أشهر",doc:"جواز + صورة",p:"7,500",fast:true},
+  {c:"موزمبيق / Mozambique",f:"🇲🇿",r:"africa",d:"10 أيام",dur:"شهر",doc:"جواز + صورة",p:"6,500",fast:false},
+  {c:"موريتانيا / Mauritania",f:"🇲🇷",r:"africa",d:"10 أيام",dur:"3 أشهر",doc:"جواز + صورة",p:"6,000",fast:false},
+  {c:"سيشل / Seychelles",f:"🇸🇨",r:"africa",d:"5 أيام",dur:"3 أشهر",doc:"جواز + صورة",p:"5,000",fast:true},
+  {c:"موريشيوس / Mauritius",f:"🇲🇺",r:"africa",d:"5 أيام",dur:"3 أشهر",doc:"جواز + صورة",p:"4,500",fast:true},
+  {c:"كينيا / Kenya",f:"🇰🇪",r:"africa",d:"7 أيام",dur:"3 أشهر",doc:"جواز + صورة",p:"5,000",fast:false},
+  {c:"تركيا / Turkey",f:"🇹🇷",r:"asia",d:"ساعة ⚡",dur:"شهر",doc:"جواز + صورة",p:"2,950",fast:true},
+  {c:"البحرين أسبوعين",f:"🇧🇭",r:"asia",d:"7 أيام",dur:"أسبوعين",doc:"جواز + كشف حساب",p:"3,700",fast:false},
+  {c:"البحرين 3 أشهر",f:"🇧🇭",r:"asia",d:"7 أيام",dur:"3 أشهر",doc:"جواز + كشف حساب",p:"4,700",fast:false},
+  {c:"البحرين سنة",f:"🇧🇭",r:"asia",d:"7 أيام",dur:"سنة",doc:"جواز + كشف حساب",p:"9,000",fast:false},
+  {c:"جورجيا / Georgia",f:"🇬🇪",r:"asia",d:"7 أيام",dur:"شهر",doc:"جواز + صورة",p:"2,800",fast:false},
+  {c:"أوزبكستان / Uzbekistan",f:"🇺🇿",r:"asia",d:"5 أيام",dur:"شهر",doc:"جواز + صورة",p:"3,500",fast:true},
+  {c:"تايلاند / Thailand",f:"🇹🇭",r:"asia",d:"15 يوم",dur:"شهرين",doc:"جواز + صورة + خطاب عمل + تأمين + كشف حساب",p:"3,500",fast:false},
+  {c:"إندونيسيا / Indonesia",f:"🇮🇩",r:"asia",d:"5 أيام",dur:"شهر",doc:"جواز + صورة",p:"4,000",fast:true},
+  {c:"سنغافورة / Singapore",f:"🇸🇬",r:"asia",d:"7 أيام",dur:"شهر",doc:"جواز + صورة + كشف حساب",p:"5,500",fast:false},
+  {c:"الفلبين / Philippines",f:"🇵🇭",r:"asia",d:"7 أيام",dur:"30 يوم",doc:"جواز + صورة",p:"5,500",fast:false},
+  {c:"الصين / China",f:"🇨🇳",r:"asia",d:"10 أيام",dur:"حسب السفارة",doc:"جواز + صورة + كشف حساب + خطاب وظيفي (تقديم بالسفارة)",p:"2,500 تجهيز",fast:false},
+  {c:"اليابان / Japan",f:"🇯🇵",r:"asia",d:"10 أيام",dur:"حسب السفارة",doc:"جواز + كشف 6 أشهر + صورة + خطاب عمل + تأمين (تقديم بالسفارة)",p:"2,500 + 26$",fast:false},
+  {c:"كمبوديا / Cambodia",f:"🇰🇭",r:"asia",d:"7 أيام",dur:"شهر",doc:"جواز + صورة",p:"3,700",fast:false},
+  {c:"نيبال / Nepal",f:"🇳🇵",r:"asia",d:"5 أيام",dur:"شهر",doc:"جواز + صورة",p:"5,000",fast:true},
+  {c:"لاوس / Laos",f:"🇱🇦",r:"asia",d:"10 أيام",dur:"شهر",doc:"جواز + صورة",p:"5,000",fast:false},
+  {c:"ميانمار / Myanmar",f:"🇲🇲",r:"asia",d:"5 أيام",dur:"شهر",doc:"جواز + صورة",p:"5,000",fast:true},
+  {c:"فيتنام مرة / Vietnam",f:"🇻🇳",r:"asia",d:"10 أيام",dur:"شهر",doc:"جواز + صورة",p:"4,500",fast:false},
+  {c:"فيتنام متعددة",f:"🇻🇳",r:"asia",d:"10 أيام",dur:"شهر",doc:"جواز + صورة",p:"6,500",fast:false},
+  {c:"طاجيكستان / Tajikistan",f:"🇹🇯",r:"asia",d:"14 يوم",dur:"شهرين",doc:"جواز + صورة",p:"3,700",fast:false},
+  {c:"قيرغيزستان / Kyrgyzstan",f:"🇰🇬",r:"asia",d:"15 يوم",dur:"شهر",doc:"جواز + صورة",p:"5,500",fast:false},
+  {c:"ألبانيا / Albania",f:"🇦🇱",r:"europe",d:"25 يوم",dur:"شهر",doc:"جواز + صورة + خطاب وظيفي + كشف بنكي 12 شهر",p:"5,500 + 7,000",fast:false},
+  {c:"كوبا مصريين / Cuba EG",f:"🇨🇺",r:"americas",d:"48 ساعة",dur:"3 أشهر",doc:"صورة جواز",p:"7,000",fast:true},
+  {c:"كوبا غير مصريين",f:"🇨🇺",r:"americas",d:"48 ساعة",dur:"3 أشهر",doc:"صورة جواز",p:"10,000",fast:true},
+  {c:"سورينام مصريين",f:"🇸🇷",r:"americas",d:"15 يوم",dur:"3 أشهر",doc:"جواز + صورة + خطاب وظيفي + كشف حساب",p:"9,000",fast:false},
+  {c:"سورينام غير مصريين",f:"🇸🇷",r:"americas",d:"48 ساعة",dur:"3 أشهر",doc:"جواز + صورة",p:"9,000",fast:true},
+  {c:"جزر البهاما / Bahamas",f:"🇧🇸",r:"americas",d:"20 يوم",dur:"3 أشهر",doc:"جواز + صورة + خطاب وظيفي + كشف حساب + فيش جنائي + كشف طبي",p:"10,500 + 4,000",fast:false},
+  {c:"كولومبيا / Colombia",f:"🇨🇴",r:"americas",d:"20 يوم",dur:"3 أشهر",doc:"جواز + صورة + كشف حساب + خطاب عمل",p:"6,500 + 8,500",fast:false},
+  {c:"البرازيل / Brazil",f:"🇧🇷",r:"americas",d:"حسب الموعد",dur:"حسب السفارة",doc:"جواز + صورة + كشف حساب + خطاب عمل + تأمين + فيش جنائي",p:"4,000 + 80$",fast:false},
+  {c:"بوليفيا / Bolivia",f:"🇧🇴",r:"americas",d:"7-10 أيام",dur:"حسب السفارة",doc:"جواز + صورة + كشف حساب + خطاب عمل + تأمين",p:"2,500",fast:false},
+  {c:"سانت كيتس / St. Kitts",f:"🇰🇳",r:"americas",d:"15 يوم",dur:"3 أشهر",doc:"جواز + صورة + كشف حساب + خطاب وظيفي",p:"8,000 + 5,000",fast:false},
+  {c:"ترينيداد وتوباغو",f:"🇹🇹",r:"americas",d:"15 يوم",dur:"3 أشهر",doc:"جواز + صورة + كشف 6 أشهر + خطاب عمل + تأمين",p:"6,000 + 5,000",fast:false},
+  {c:"أنتيغوا / Antigua",f:"🇦🇬",r:"americas",d:"15 يوم",dur:"شهر",doc:"جواز + صورة + كشف 6 أشهر + خطاب عمل + فيش جنائي",p:"6,000 + 5,000",fast:false},
+  {c:"غويانا / Guyana",f:"🇬🇾",r:"americas",d:"15 يوم",dur:"3 أشهر",doc:"جواز + صورة + كشف 6 أشهر + خطاب عمل + فيش جنائي",p:"6,500 + 25$",fast:false},
+  {c:"أستراليا / Australia",f:"🇦🇺",r:"oceania",d:"من 30 يوم",dur:"سنة متعددة",doc:"جواز + صورة + إثبات مالي + تأمين طبي + أملاك في مصر",p:"13,000 + 4,000",fast:false},
+  {c:"نيوزيلندا / New Zealand",f:"🇳🇿",r:"oceania",d:"30 يوم عمل",dur:"حسب السفارة",doc:"جواز + صورة + إثبات مالي + تأمين طبي + أملاك + تأشيرات سابقة",p:"20,000 + 4,000",fast:false},
 ];
 
-let AR='all';
-function render(data){
-  const g=document.getElementById('vg'),e=document.getElementById('ve');
-  g.innerHTML='';
-  if(!data.length){e.style.display='block';return;}
-  e.style.display='none';
-  data.forEach(v=>{
-    g.innerHTML+=`<div class="vc">${v.fast?'<div class="vfast">⚡ سريع</div>':''}<div class="vc-top"><div class="vc-flag">${v.f}</div><div class="vc-price">${v.p} جنيه</div></div><div class="vc-name">${v.c}</div><div class="vc-meta"><div class="vcm"><div class="vcm-l">مدة التنفيذ</div><div class="vcm-v">${v.d}</div></div><div class="vcm"><div class="vcm-l">مدة التأشيرة</div><div class="vcm-v">${v.dur}</div></div></div><div class="vc-docs"><b>الأوراق:</b> ${v.doc}</div></div>`;
+let AR_FILTER = 'all';
+function render(data) {
+  const g = document.getElementById('vg'), e = document.getElementById('ve');
+  g.innerHTML = '';
+  if (!data.length) { e.style.display = 'block'; return; }
+  e.style.display = 'none';
+  data.forEach(v => {
+    const img = IMGS[v.f] || 'https://images.unsplash.com/photo-1488085061387-422e29b40080?w=400&q=70';
+    g.innerHTML += `<div class="vc">
+      ${v.fast ? '<div class="vfast">⚡ Fast</div>' : ''}
+      <div class="vc-photo">
+        <img src="${img}" alt="${v.c}" loading="lazy">
+        <div class="vc-photo-ov"></div>
+        <div class="vc-flag-big">${v.f}</div>
+        <div class="vc-price-badge">${v.p} EGP</div>
+      </div>
+      <div class="vc-body">
+        <div class="vc-name">${v.c}</div>
+        <div class="vc-meta">
+          <div class="vcm"><div class="vcm-l">Processing</div><div class="vcm-v">${v.d}</div></div>
+          <div class="vcm"><div class="vcm-l">Validity</div><div class="vcm-v">${v.dur}</div></div>
+        </div>
+        <div class="vc-docs"><b>Docs:</b> ${v.doc}</div>
+      </div>
+    </div>`;
   });
 }
-function fv(r,btn){
-  AR=r;
-  document.querySelectorAll('.vtab').forEach(t=>t.classList.remove('on'));
+function fv(r, btn) {
+  AR_FILTER = r;
+  document.querySelectorAll('.vtab').forEach(t => t.classList.remove('on'));
   btn.classList.add('on');
   apply();
 }
-function apply(){
-  const q=document.getElementById('vs').value.trim();
-  let res=VD;
-  if(AR==='fast') res=res.filter(v=>v.fast);
-  else if(AR!=='all') res=res.filter(v=>v.r===AR);
-  if(q) res=res.filter(v=>v.c.includes(q)||v.f.includes(q));
+function apply() {
+  const q = document.getElementById('vs').value.trim().toLowerCase();
+  let res = VD;
+  if (AR_FILTER === 'fast') res = res.filter(v => v.fast);
+  else if (AR_FILTER !== 'all') res = res.filter(v => v.r === AR_FILTER);
+  if (q) res = res.filter(v => v.c.toLowerCase().includes(q) || v.f.includes(q));
   render(res);
 }
-document.getElementById('vs').addEventListener('input',apply);
+document.getElementById('vs').addEventListener('input', apply);
 render(VD);
 
 /* ── FORM ── */
-function doForm(e){
+function doForm(e) {
   e.preventDefault();
-  const b=document.getElementById('fsb');
-  b.textContent='✅ تم الإرسال! هنتواصل معاك قريباً';
-  b.style.cssText='width:100%;background:#25D366;color:#fff;padding:.9rem;border:none;border-radius:6px;font-family:Tajawal,sans-serif;font-size:1rem;font-weight:800;cursor:pointer;';
-  setTimeout(()=>location.reload(),5000);
+  const b = document.getElementById('fsb');
+  b.innerHTML = '✅ Sent! We\'ll contact you soon.';
+  b.style.cssText = 'width:100%;background:#25D366;color:#fff;padding:.88rem;border:none;border-radius:6px;font-size:.96rem;font-weight:800;cursor:pointer;';
+  setTimeout(() => location.reload(), 5000);
 }
 </script>
 </body>
